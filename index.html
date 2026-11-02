@@ -1,158 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jay & Charity ❤️</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Jay & Charity ❤️
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
 </head>
 
 <body>
 
-<!-- HERO -->
+    <!-- MUSIC -->
 
-<section class="hero">
+    <audio
+        id="bgMusic"
+        loop>
 
-    <div class="overlay"></div>
+        <source
+            src="music/oursong.mp3"
+            type="audio/mpeg">
 
-    <div class="hero-box">
+    </audio>
 
-        <h1>Jay & Charity ❤️</h1>
+    <button
+        id="musicBtn"
+        class="music-btn">
 
-        <h2>The Love Story Under The Moonlit Tree</h2>
+        🎵 Play Music
 
-        <p>
-            Every love story starts with a simple moment.
-            A conversation. A memory. A connection.
-            And somehow those little moments became
-            something beautiful.
-        </p>
+    </button>
 
-        <a href="#story">
-            <button class="btn">
-                Begin Our Story ❤️
-            </button>
-        </a>
+    <!-- HERO -->
 
-    </div>
+    <section class="hero">
 
-</section>
+        <div class="hero-card">
 
+            <h1>
+                Jay & Charity ❤️
+            </h1>
 
-<!-- STORY -->
+            <h2>
+                The Love Story Under
+                The Moonlit Tree
+            </h2>
 
-<section id="story" class="section reveal">
+            <p>
 
-    <div class="card">
+                Some stories begin with a single moment.
+                Some begin with a simple conversation.
+                Ours became a journey filled with memories,
+                laughter, dreams, and love.
 
-        <h2>Chapter One: The Beginning</h2>
+            </p>
 
-        <p>
-            Some stories are planned.
-            Some stories arrive unexpectedly.
-        </p>
+            <a href="#story">
 
-        <p>
-            Ours happened naturally through moments,
-            laughter, and memories that slowly became
-            something much more meaningful.
-        </p>
+                <button class="primary-btn">
 
-        <p>
-            The most beautiful thing about love is that
-            sometimes it finds us when we least expect it.
-        </p>
+                    Begin Our Story ❤️
 
-    </div>
+                </button>
 
-</section>
+            </a>
 
+        </div>
 
-<!-- ALBUM -->
+    </section>
 
-<section class="section reveal">
+    <!-- STORY -->
 
-    <div class="upload-box">
+    <section
+        id="story"
+        class="section reveal">
 
-        <h2 class="album-title">
-            Our Magical Memories ❤️
+        <div class="story-card">
+
+            <h2>
+                Chapter One:
+                The Beginning
+            </h2>
+
+            <p>
+
+                We never really know when
+                someone will become important
+                in our lives.
+
+            </p>
+
+            <p>
+
+                What started as simple moments
+                slowly turned into beautiful
+                memories.
+
+            </p>
+
+            <p>
+
+                And those memories became
+                part of a story that continues
+                every day.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- LOVE MESSAGE -->
+
+    <section
+        class="love-message reveal">
+
+        <div class="message-card">
+
+            <h2>
+                💌 A Message For Charity
+            </h2>
+
+            <p id="typing-message"></p>
+
+        </div>
+
+    </section>
+
+    <!-- FAVORITE QUOTES -->
+
+    <section
+        class="section reveal">
+
+        <div class="story-card">
+
+            <h2>
+                Little Things I Love ❤️
+            </h2>
+
+            <p>
+
+                ❤️ Every memory feels brighter because of you.
+
+            </p>
+
+            <p>
+
+                ❤️ My favorite place will always be beside you.
+
+            </p>
+
+            <p>
+
+                ❤️ You make ordinary days feel magical.
+
+            </p>
+
+            <p>
+
+                ❤️ In a thousand lifetimes,
+                I would still choose you.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ALBUM -->
+
+    <section
+        id="album"
+        class="album-section">
+
+        <h2 class="section-title">
+
+            📸 Our Magical Memories
+
         </h2>
 
-        <div class="upload">
-
-            <input
-                type="file"
-                id="mediaUpload"
-                accept="image/*,video/*"
-                multiple
-            >
+        <div
+            id="gallery"
+            class="gallery">
 
         </div>
 
-        <div id="gallery" class="gallery">
+    </section>
+
+    <!-- FUTURE -->
+
+    <section
+        class="section reveal">
+
+        <div class="future-card">
+
+            <h2>
+                Looking Forward ❤️
+            </h2>
+
+            <p>
+
+                More adventures.
+
+            </p>
+
+            <p>
+
+                More places to explore.
+
+            </p>
+
+            <p>
+
+                More laughter to share.
+
+            </p>
+
+            <p>
+
+                More dreams to achieve together.
+
+            </p>
 
         </div>
 
+    </section>
+
+    <!-- PROMISE -->
+
+    <section
+        class="section reveal">
+
+        <div class="story-card">
+
+            <h2>
+                A Simple Promise ❤️
+            </h2>
+
+            <p>
+
+                Life may bring challenges.
+
+            </p>
+
+            <p>
+
+                There may be difficult days,
+                misunderstandings, and moments
+                that test us.
+
+            </p>
+
+            <p>
+
+                But I hope we always choose
+                understanding over pride,
+                communication over silence,
+                and love over anything else.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FINALE -->
+
+    <section
+        class="section reveal">
+
+        <div class="ending-card final-message">
+
+            <h2>
+
+                Our Story Continues...
+
+            </h2>
+
+            <p>
+
+                We may not know what tomorrow
+                will bring.
+
+            </p>
+
+            <p>
+
+                But if I could choose
+                one thing to remain certain...
+
+            </p>
+
+            <h1>
+
+                I Would Still
+                Choose You ❤️
+
+            </h1>
+
+            <br>
+
+            <span>
+
+                Forever and Always.
+
+            </span>
+
+        </div>
+
+    </section>
+
+    <!-- LIGHTBOX -->
+
+    <div
+        id="lightbox"
+        class="lightbox">
+
+        <span
+            id="closeLightbox"
+            class="close-lightbox">
+
+            &times;
+
+        </span>
+
+        <img
+            id="lightboxImg">
+
     </div>
 
-</section>
+    <script
+        src="script.js">
 
-
-<!-- FUTURE -->
-
-<section class="section reveal">
-
-    <div class="card">
-
-        <h2>The Future</h2>
-
-        <p>
-            More adventures.
-            More places.
-            More dreams.
-            More memories.
-        </p>
-
-        <p>
-            And hopefully many more chapters
-            written together.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ENDING -->
-
-<section class="section">
-
-    <div class="card ending-card">
-
-        <h2>The Story Continues...</h2>
-
-        <p>
-            This isn't the end.
-        </p>
-
-        <h1>❤️ Jay & Charity ❤️</h1>
-
-    </div>
-
-</section>
-
-
-<!-- LIGHTBOX -->
-
-<div id="lightbox" class="lightbox">
-
-    <img id="lightboxImage">
-
-</div>
-
-<script src="script.js"></script>
+    </script>
 
 </body>
+
 </html>
