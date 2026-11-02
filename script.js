@@ -541,6 +541,88 @@ function changeQuote(){
     }
 
 }
+const upload =
+document.getElementById(
+"mediaUpload"
+);
+
+const gallery =
+document.getElementById(
+"gallery"
+);
+
+upload.addEventListener(
+"change",
+event=>{
+
+const files =
+[...event.target.files];
+
+files.forEach(file=>{
+
+const url =
+URL.createObjectURL(file);
+
+const card =
+document.createElement("div");
+
+card.className =
+"memory-card";
+
+if(
+file.type.startsWith(
+"image"
+)
+){
+
+card.innerHTML = `
+<img src="${url}">
+
+<div class="caption">
+
+❤️ ${file.name}
+
+</div>
+`;
+
+card.addEventListener(
+"click",
+()=>{
+
+openLightbox(url);
+
+}
+);
+
+}
+else{
+
+card.innerHTML = `
+<video
+controls
+autoplay
+muted
+loop>
+
+<source
+src="${url}">
+
+</video>
+
+<div class="caption">
+
+🎥 ${file.name}
+
+</div>
+`;
+
+}
+
+gallery.prepend(card);
+
+});
+
+});
 
 changeQuote();
 
