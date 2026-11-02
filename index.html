@@ -120,23 +120,6 @@
 
     </section>
 
-    <!-- LOVE MESSAGE -->
-
-    <section
-        class="love-message reveal">
-
-        <div class="message-card">
-
-            <h2>
-                💌 A Message For Charity
-            </h2>
-
-            <p id="typing-message"></p>
-
-        </div>
-
-    </section>
-
     <!-- FAVORITE QUOTES -->
 
     <section
@@ -179,23 +162,52 @@
 
     <!-- ALBUM -->
 
-    <section
-        id="album"
-        class="album-section">
+<section class="album-section reveal">
 
-        <h2 class="section-title">
+    <h2 class="section-title">
+        ❤️ Our Magical Memories ❤️
+    </h2>
 
-            📸 Our Magical Memories
+    <p class="album-subtitle">
+        Every picture tells a story,
+        every video holds a memory.
+    </p>
 
-        </h2>
+    <div class="upload-container">
 
-        <div
-            id="gallery"
-            class="gallery">
+        <label
+            for="mediaUpload"
+            class="upload-box">
 
-        </div>
+            <div class="upload-icon">
+                📸
+            </div>
 
-    </section>
+            <h3>
+                Upload Photos & Videos
+            </h3>
+
+            <p>
+                Click or drag files here
+            </p>
+
+        </label>
+
+        <input
+            type="file"
+            id="mediaUpload"
+            accept="image/*,video/*"
+            multiple
+            hidden>
+
+    </div>
+
+    <div
+        id="gallery"
+        class="gallery">
+    </div>
+
+</section>
 
     <!-- FUTURE -->
 
