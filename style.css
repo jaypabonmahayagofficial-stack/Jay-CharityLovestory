@@ -1,8 +1,11 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
 }
 
 html{
@@ -10,180 +13,331 @@ html{
 }
 
 body{
-    background:url("background.jpg");
+
+    font-family:
+    "Poppins",
+    sans-serif;
+
+    background:
+    url("background.jpg");
+
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
     background-attachment:fixed;
+
     color:white;
+
     overflow-x:hidden;
+
+    position:relative;
 }
 
+/* DARK OVERLAY */
+
 body::before{
+
     content:"";
+
     position:fixed;
+
     inset:0;
-    background:rgba(0,0,0,.45);
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.60)
+    );
+
     z-index:-1;
 }
 
-/* HERO */
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+    rgba(255,255,255,.25);
+
+    border-radius:50px;
+}
+
+
+/* ===========================
+   MUSIC BUTTON
+=========================== */
+
+.music-btn{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    z-index:9999;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    rgba(255,255,255,.15);
+
+    backdrop-filter:
+    blur(20px);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.music-btn:hover{
+
+    transform:
+    scale(1.06);
+
+    box-shadow:
+    0 0 25px pink;
+}
+
+
+/* ===========================
+   HERO
+=========================== */
 
 .hero{
 
     min-height:100vh;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     padding:20px;
 }
 
-.hero-box{
+.hero-card{
 
     max-width:900px;
     width:100%;
 
+    padding:60px;
+
     text-align:center;
 
-    padding:50px;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.4);
-
-    animation:fadeUp 2s ease;
-}
-
-.hero h1{
-
-    font-size:80px;
-
-    margin-bottom:20px;
-
-    text-shadow:
-    0 0 20px rgba(255,255,255,.8);
-}
-
-.hero h2{
-
-    font-weight:300;
-    margin-bottom:20px;
-}
-
-.hero p{
-
-    line-height:2;
-    font-size:18px;
-    margin-bottom:30px;
-}
-
-.btn{
-
-    border:none;
-    cursor:pointer;
-
-    padding:15px 35px;
-
-    border-radius:999px;
-
-    color:white;
-
-    background:
-    rgba(255,255,255,.15);
-
-    backdrop-filter:blur(10px);
-
-    transition:.4s;
-}
-
-.btn:hover{
-
-    transform:
-    translateY(-5px);
-
-    background:
-    rgba(255,255,255,.3);
-}
-
-
-/* SECTIONS */
-
-.section{
-    padding:100px 20px;
-}
-
-.card{
-
-    max-width:1000px;
-
-    margin:auto;
-
-    padding:40px;
-
-    border-radius:25px;
+    border-radius:35px;
 
     background:
     rgba(255,255,255,.08);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:
+    blur(20px);
 
     border:
     1px solid rgba(255,255,255,.15);
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,.4);
+    0 25px 60px rgba(0,0,0,.35);
+
+    animation:
+    heroFade 2s ease;
 }
 
-.card h2{
+.hero-card h1{
 
-    margin-bottom:25px;
-    font-size:40px;
+    font-size:5rem;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 25px pink;
 }
 
-.card p{
+.hero-card h2{
+
+    font-weight:300;
+
+    margin-bottom:20px;
+
+    color:#ffd8ef;
+}
+
+.hero-card p{
 
     line-height:2;
-    margin-bottom:20px;
+
+    font-size:20px;
+
+    margin-bottom:30px;
+}
+
+.primary-btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:50px;
+
+    padding:15px 35px;
+
+    color:white;
+
+    font-size:18px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #ff80bf,
+        #ff4fa3
+    );
+
+    transition:.4s;
+}
+
+.primary-btn:hover{
+
+    transform:
+    translateY(-5px)
+    scale(1.03);
+
+    box-shadow:
+    0 10px 30px rgba(255,105,180,.5);
 }
 
 
-/* ALBUM */
+/* ===========================
+   SECTIONS
+=========================== */
 
-.album-title{
+.section{
+
+    padding:120px 20px;
+}
+
+.section-title{
 
     text-align:center;
 
     font-size:50px;
 
-    margin-bottom:20px;
+    margin-bottom:50px;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,.5);
 }
 
-.upload{
 
-    text-align:center;
-    margin-bottom:40px;
-}
+/* ===========================
+   STORY CARDS
+=========================== */
 
-input[type=file]{
+.story-card,
+.message-card,
+.future-card,
+.ending-card{
 
-    padding:15px;
+    max-width:1000px;
 
-    border:none;
+    margin:auto;
 
-    border-radius:15px;
+    padding:50px;
+
+    border-radius:30px;
 
     background:
-    rgba(255,255,255,.15);
+    rgba(255,255,255,.08);
 
-    color:white;
+    backdrop-filter:
+    blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 25px 50px rgba(0,0,0,.3);
+
+    transition:.5s;
+}
+
+.story-card:hover,
+.message-card:hover,
+.future-card:hover{
+
+    transform:
+    translateY(-10px);
+}
+
+.story-card h2{
+
+    margin-bottom:25px;
+
+    font-size:40px;
+}
+
+.story-card p{
+
+    line-height:2;
+
+    margin-bottom:20px;
+
+    font-size:18px;
+}
+
+
+/* ===========================
+   LOVE MESSAGE
+=========================== */
+
+.love-message{
+
+    padding:100px 20px;
+}
+
+.message-card{
+
+    text-align:center;
+}
+
+.message-card h2{
+
+    margin-bottom:25px;
+
+    font-size:42px;
+}
+
+.message-card p{
+
+    font-size:22px;
+
+    line-height:2;
+}
+
+
+/* ===========================
+   ALBUM
+=========================== */
+
+.album-section{
+
+    padding:100px 30px;
 }
 
 .gallery{
@@ -191,12 +345,19 @@ input[type=file]{
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(300px,1fr));
+    repeat(
+        auto-fit,
+        minmax(320px,1fr)
+    );
 
-    gap:25px;
+    gap:30px;
 }
 
-.memory{
+/* MEMORY CARD */
+
+.memory-card{
+
+    position:relative;
 
     overflow:hidden;
 
@@ -205,55 +366,110 @@ input[type=file]{
     background:
     rgba(255,255,255,.08);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:
+    blur(15px);
+
+    border:
+    1px solid rgba(255,255,255,.10);
 
     transition:.5s;
 
     cursor:pointer;
 }
 
-.memory:hover{
+.memory-card:hover{
 
     transform:
-    translateY(-10px)
+    translateY(-12px)
     scale(1.03);
+
+    box-shadow:
+    0 20px 50px
+    rgba(255,105,180,.25);
 }
 
-.memory img{
+/* SHINE EFFECT */
+
+.memory-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    transform:
+    translateX(-100%);
+
+    transition:1s;
+}
+
+.memory-card:hover::before{
+
+    transform:
+    translateX(100%);
+}
+
+.memory-card img{
 
     width:100%;
 
-    height:300px;
+    height:350px;
 
     object-fit:cover;
 
     display:block;
 }
 
-.memory video{
+.memory-card video{
 
     width:100%;
-    height:300px;
+
+    height:350px;
 
     object-fit:cover;
+
+    display:block;
+}
+
+.caption{
+
+    padding:18px;
+
+    text-align:center;
+
+    background:
+    rgba(0,0,0,.35);
+
+    color:white;
 }
 
 
-/* LIGHTBOX */
+/* ===========================
+   LIGHTBOX
+=========================== */
 
 .lightbox{
+
+    display:none;
 
     position:fixed;
 
     inset:0;
 
-    display:none;
-
     justify-content:center;
     align-items:center;
 
     background:
-    rgba(0,0,0,.9);
+    rgba(0,0,0,.95);
 
     z-index:99999;
 }
@@ -264,22 +480,39 @@ input[type=file]{
     max-height:90%;
 
     border-radius:20px;
+
+    box-shadow:
+    0 0 40px rgba(255,255,255,.25);
+}
+
+.close-lightbox{
+
+    position:absolute;
+
+    top:25px;
+    right:40px;
+
+    font-size:50px;
+
+    cursor:pointer;
 }
 
 
-/* FALLING LEAVES */
+/* ===========================
+   LEAVES
+=========================== */
 
 .leaf{
 
     position:fixed;
 
-    top:-100px;
-
-    font-size:24px;
-
-    z-index:999;
+    top:-50px;
 
     pointer-events:none;
+
+    font-size:25px;
+
+    z-index:999;
 
     animation:
     fall linear forwards;
@@ -288,9 +521,8 @@ input[type=file]{
 @keyframes fall{
 
     from{
-
         transform:
-        translateY(-100px)
+        translateY(-50px)
         rotate(0deg);
     }
 
@@ -298,7 +530,7 @@ input[type=file]{
 
         transform:
         translateY(120vh)
-        translateX(150px)
+        translateX(180px)
         rotate(720deg);
 
         opacity:0;
@@ -306,7 +538,9 @@ input[type=file]{
 }
 
 
-/* FIREFLIES */
+/* ===========================
+   FIREFLIES
+=========================== */
 
 .firefly{
 
@@ -320,105 +554,177 @@ input[type=file]{
     background:#ffeaa7;
 
     box-shadow:
-    0 0 15px #ffeaa7;
+    0 0 20px #ffeaa7;
 
     animation:
-    glow 3s infinite alternate;
+    fireflyGlow 3s infinite;
 }
 
-@keyframes glow{
+@keyframes fireflyGlow{
 
-    to{
-        opacity:.2;
+    50%{
+
+        opacity:.15;
+
+        transform:
+        scale(.8);
     }
+
 }
 
 
-/* HEARTS */
+/* ===========================
+   FLOATING HEARTS
+=========================== */
 
-.heart{
+.floating-heart{
 
     position:fixed;
 
+    bottom:-50px;
+
     font-size:25px;
+
+    z-index:9999;
 
     pointer-events:none;
 
     animation:
-    heartFloat 3s forwards;
+    floatHeart 8s linear forwards;
 }
 
-@keyframes heartFloat{
+@keyframes floatHeart{
 
     to{
 
         transform:
-        translateY(-200px)
-        scale(1.5);
+        translateY(-120vh)
+        rotate(360deg);
 
         opacity:0;
     }
 }
 
 
-/* REVEAL */
+/* ===========================
+   REVEAL ANIMATION
+=========================== */
 
 .reveal{
 
     opacity:0;
 
     transform:
-    translateY(50px);
+    translateY(80px);
 
-    transition:1s;
+    transition:
+    1.2s ease;
 }
 
 .reveal.active{
 
     opacity:1;
 
-    transform:none;
+    transform:
+    translateY(0);
 }
 
 
-/* ENTRANCE */
+/* ===========================
+   HERO ENTRANCE
+=========================== */
 
-@keyframes fadeUp{
+@keyframes heroFade{
 
     from{
 
         opacity:0;
 
         transform:
-        translateY(80px);
+        translateY(80px)
+        scale(.95);
     }
 
     to{
 
         opacity:1;
 
-        transform:none;
+        transform:
+        translateY(0)
+        scale(1);
     }
 }
 
 
-.ending-card{
+/* ===========================
+   FINAL MESSAGE
+=========================== */
+
+.final-message{
 
     text-align:center;
 }
 
-@media(max-width:768px){
+.final-message h1{
 
-    .hero h1{
-        font-size:50px;
+    font-size:70px;
+
+    color:#ffd0ea;
+
+    text-shadow:
+    0 0 25px pink;
+
+    animation:
+    heartbeat 2s infinite;
+}
+
+@keyframes heartbeat{
+
+    50%{
+
+        transform:
+        scale(1.05);
+    }
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    .hero-card{
+
+        padding:35px;
     }
 
-    .album-title{
+    .hero-card h1{
+
+        font-size:3rem;
+    }
+
+    .hero-card h2{
+
+        font-size:1.2rem;
+    }
+
+    .section-title{
+
         font-size:35px;
     }
 
-    .card h2{
-        font-size:30px;
+    .story-card,
+    .message-card,
+    .future-card,
+    .ending-card{
+
+        padding:30px;
     }
 
+    .final-message h1{
+
+        font-size:40px;
+    }
 }
+``
