@@ -1,6 +1,6 @@
-/* ===================================
+/* ======================================
    MUSIC
-=================================== */
+====================================== */
 
 const musicBtn =
 document.getElementById("musicBtn");
@@ -8,242 +8,204 @@ document.getElementById("musicBtn");
 const bgMusic =
 document.getElementById("bgMusic");
 
-musicBtn.addEventListener("click", () => {
+musicBtn.addEventListener(
+"click",
+() => {
 
     bgMusic.play();
 
     musicBtn.innerHTML =
     "❤️ Music Playing";
 
-});
-
-
-/* ===================================
-   LOVE LETTER TYPING EFFECT
-=================================== */
-
-const typingTarget =
-document.getElementById(
-"typing-message"
+}
 );
 
-if(typingTarget){
+/* ======================================
+   MEMORY DATA
+====================================== */
 
-const loveMessage =
+const memories = [
 
-`Every day with you feels like a page from a beautiful story.
+{
+    type:"image",
+    file:"photos/photo1.jpg",
+    chapter:"Chapter 01",
+    title:"The Beginning",
+    text:"Every journey starts somewhere. This was one of the moments that became part of our story."
+},
 
-You make ordinary moments feel magical.
+{
+    type:"video",
+    file:"videos/video1.mp4",
+    chapter:"Chapter 02",
+    title:"An Adventure Together",
+    text:"A memory worth revisiting again and again."
+},
 
-Thank you for every laugh, every memory, and every adventure.
+{
+    type:"image",
+    file:"photos/photo2.jpg",
+    chapter:"Chapter 03",
+    title:"Favorite Moment",
+    text:"Some memories become timeless because of who we shared them with."
+},
 
-No matter where life takes us, you'll always be my favorite person,
-my favorite memory,
-and my favorite chapter.
+{
+    type:"video",
+    file:"videos/video2.mp4",
+    chapter:"Chapter 04",
+    title:"Another Beautiful Day",
+    text:"A small moment that became unforgettable."
+},
 
-❤️ Love,
-Jay`;
-
-let letterIndex = 0;
-
-function typeLetter(){
-
-    if(letterIndex < loveMessage.length){
-
-        typingTarget.innerHTML +=
-        loveMessage.charAt(letterIndex);
-
-        letterIndex++;
-
-        setTimeout(
-            typeLetter,
-            40
-        );
-
-    }
-
+{
+    type:"image",
+    file:"photos/photo3.jpg",
+    chapter:"Chapter 05",
+    title:"Memories We Treasure",
+    text:"Every photo tells a piece of our story."
 }
-
-typeLetter();
-
-}
-
-
-/* ===================================
-   PHOTO GALLERY
-=================================== */
-
-/*
-ADD YOUR PHOTOS HERE
-*/
-
-const photos = [
-
-"photos/photo1.jpg",
-"photos/photo2.jpg",
-"photos/photo3.jpg",
-"photos/photo4.jpg",
-"photos/photo5.jpg"
 
 ];
 
-/*
-ADD YOUR VIDEOS HERE
-*/
+/* ======================================
+   BUILD MEMORY SECTIONS
+====================================== */
 
-const videos = [
-
-"videos/video1.mp4",
-"videos/video2.mp4"
-
-];
-
-const gallery =
+const memoryFeed =
 document.getElementById(
-"gallery"
+"memoryFeed"
 );
 
-/* LOAD PHOTOS */
+memories.forEach(memory => {
 
-photos.forEach(photo => {
-
-    const card =
-    document.createElement("div");
-
-    card.classList.add(
-    "memory-card"
+    const section =
+    document.createElement(
+    "div"
     );
 
-    card.innerHTML = `
-        <img
-        src="${photo}"
-        alt="Memory">
-
-        <div class="caption">
-
-            ❤️ Beautiful Memory ❤️
-
-        </div>
-    `;
-
-    card.addEventListener(
-    "click",
-    () => openLightbox(photo)
+    section.classList.add(
+    "memory-item"
     );
 
-    gallery.appendChild(card);
+    let mediaHTML = "";
 
-});
+    if(memory.type === "image"){
 
+        mediaHTML = `
+            <div class="memory-media">
 
-/* LOAD VIDEOS */
+                <img
+                src="${memory.file}"
+                alt="${memory.title}"
+                class="memory-image">
 
-videos.forEach(video => {
+            </div>
+        `;
 
-    const card =
-    document.createElement("div");
+    } else {
 
-    card.classList.add(
-    "memory-card"
-    );
+        mediaHTML = `
+            <div class="memory-media">
 
-    card.innerHTML = `
-        <video
-        autoplay
-        muted
-        loop
-        playsinline>
+                <video
+                autoplay
+                muted
+                loop
+                playsinline>
 
-            <source
-            src="${video}"
-            type="video/mp4">
+                    <source
+                    src="${memory.file}"
+                    type="video/mp4">
 
-        </video>
+                </video>
 
-        <div class="caption">
-
-            🎥 Precious Memory
-
-        </div>
-    `;
-
-    gallery.appendChild(card);
-
-});
-
-
-/* ===================================
-   LIGHTBOX
-=================================== */
-
-const lightbox =
-document.getElementById(
-"lightbox"
-);
-
-const lightboxImg =
-document.getElementById(
-"lightboxImg"
-);
-
-const closeBtn =
-document.getElementById(
-"closeLightbox"
-);
-
-function openLightbox(src){
-
-    lightbox.style.display =
-    "flex";
-
-    lightboxImg.src =
-    src;
-
-    createHeartBurst();
-
-}
-
-if(closeBtn){
-
-closeBtn.addEventListener(
-"click",
-() => {
-
-    lightbox.style.display =
-    "none";
-
-});
-
-}
-
-if(lightbox){
-
-lightbox.addEventListener(
-"click",
-e => {
-
-    if(e.target === lightbox){
-
-        lightbox.style.display =
-        "none";
+            </div>
+        `;
 
     }
 
+    section.innerHTML = `
+
+        ${mediaHTML}
+
+        <div class="memory-text">
+
+            <span>
+
+                ${memory.chapter}
+
+            </span>
+
+            <h2>
+
+                ${memory.title}
+
+            </h2>
+
+            <p>
+
+                ${memory.text}
+
+            </p>
+
+        </div>
+
+    `;
+
+    memoryFeed.appendChild(
+    section
+    );
+
 });
 
-}
-
-
-/* ===================================
+/* ======================================
    SCROLL REVEAL
-=================================== */
+====================================== */
 
-const revealElements =
+const revealObserver =
+new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add(
+            "show"
+            );
+
+        }
+
+    });
+
+},
+
+{
+    threshold:.15
+}
+
+);
+
+document
+.querySelectorAll(".memory-item")
+.forEach(item=>{
+
+    revealObserver.observe(item);
+
+});
+
+/* ======================================
+   REVEAL OTHER SECTIONS
+====================================== */
+
+const sections =
 document.querySelectorAll(
 ".reveal"
 );
 
-const observer =
+const sectionObserver =
 new IntersectionObserver(
 
 (entries)=>{
@@ -263,28 +225,128 @@ new IntersectionObserver(
 },
 
 {
-    threshold:0.1
+    threshold:.1
 }
 
 );
 
-revealElements.forEach(el=>{
+sections.forEach(section=>{
 
-    observer.observe(el);
+    sectionObserver.observe(
+    section
+    );
 
 });
 
+/* ======================================
+   LIGHTBOX
+====================================== */
 
-/* ===================================
+const lightbox =
+document.getElementById(
+"lightbox"
+);
+
+const lightboxImg =
+document.getElementById(
+"lightboxImg"
+);
+
+const closeBtn =
+document.getElementById(
+"closeLightbox"
+);
+
+document.addEventListener(
+"click",
+e=>{
+
+if(
+e.target.classList.contains(
+"memory-image"
+)
+){
+
+    lightbox.style.display =
+    "flex";
+
+    lightboxImg.src =
+    e.target.src;
+
+    createHeartBurst();
+
+}
+
+});
+
+closeBtn.addEventListener(
+"click",
+()=>{
+
+    lightbox.style.display =
+    "none";
+
+});
+
+lightbox.addEventListener(
+"click",
+e=>{
+
+if(e.target === lightbox){
+
+    lightbox.style.display =
+    "none";
+
+}
+
+});
+
+/* ======================================
+   CINEMATIC IMAGE ZOOM
+====================================== */
+
+window.addEventListener(
+"scroll",
+()=>{
+
+document
+.querySelectorAll(
+".memory-image"
+)
+.forEach(img=>{
+
+    const rect =
+    img.getBoundingClientRect();
+
+    const center =
+    window.innerHeight / 2;
+
+    const distance =
+    Math.abs(
+    rect.top - center
+    );
+
+    const scale =
+    Math.max(
+    1,
+    1.08 - distance/3000
+    );
+
+    img.style.transform =
+    `scale(${scale})`;
+
+});
+
+});
+
+/* ======================================
    FALLING LEAVES
-=================================== */
+====================================== */
 
 function createLeaf(){
 
     const leaf =
-    document.createElement(
-    "div"
-    );
+    document.createElement("div");
 
     leaf.className =
     "leaf";
@@ -306,23 +368,21 @@ function createLeaf(){
     leaf
     );
 
-    setTimeout(()=>{
-
-        leaf.remove();
-
-    },15000);
+    setTimeout(
+    ()=>leaf.remove(),
+    15000
+    );
 
 }
 
 setInterval(
 createLeaf,
-400
+450
 );
 
-
-/* ===================================
+/* ======================================
    FIREFLIES
-=================================== */
+====================================== */
 
 for(let i=0;i<40;i++){
 
@@ -352,17 +412,14 @@ for(let i=0;i<40;i++){
 
 }
 
-
-/* ===================================
+/* ======================================
    FLOATING HEARTS
-=================================== */
+====================================== */
 
 function createHeart(){
 
     const heart =
-    document.createElement(
-    "div"
-    );
+    document.createElement("div");
 
     heart.className =
     "floating-heart";
@@ -371,39 +428,35 @@ function createHeart(){
     "❤️";
 
     heart.style.left =
-    Math.random()*100 +
-    "vw";
+    Math.random()*100
+    + "vw";
 
     document.body.appendChild(
     heart
     );
 
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },8000);
+    setTimeout(
+    ()=>heart.remove(),
+    8000
+    );
 
 }
 
 setInterval(
 createHeart,
-1800
+2500
 );
 
-
-/* ===================================
+/* ======================================
    HEART BURST
-=================================== */
+====================================== */
 
 function createHeartBurst(){
 
-    for(let i=0;i<15;i++){
+    for(let i=0;i<12;i++){
 
         const heart =
-        document.createElement(
-        "div"
-        );
+        document.createElement("div");
 
         heart.className =
         "floating-heart";
@@ -415,118 +468,56 @@ function createHeartBurst(){
         (
         window.innerWidth/2
         +
-        (Math.random()*200-100)
+        (Math.random()*250-125)
         )
         + "px";
 
         heart.style.bottom =
-        "30vh";
+        "35vh";
 
         document.body.appendChild(
         heart
         );
 
-        setTimeout(()=>{
-
-            heart.remove();
-
-        },4000);
+        setTimeout(
+        ()=>heart.remove(),
+        5000
+        );
 
     }
 
 }
 
-
-/* ===================================
-   AUTO SCROLL TITLE GLOW
-=================================== */
-
-window.addEventListener(
-"scroll",
-()=>{
-
-    const hero =
-    document.querySelector(
-    ".hero-card h1"
-    );
-
-    if(!hero) return;
-
-    const scroll =
-    window.scrollY;
-
-    hero.style.textShadow =
-    `
-    0 0 ${
-    20 + scroll/25
-    }px pink
-    `;
-
-});
-
-
-/* ===================================
-   ROMANTIC QUOTES ROTATOR
-=================================== */
+/* ======================================
+   FLOATING MEMORY QUOTES
+====================================== */
 
 const quotes = [
 
-"❤️ Every memory is better because of you.",
+"❤️ Every memory has a story.",
 
-"❤️ My favorite place is beside you.",
+"❤️ The best adventures become favorite memories.",
 
-"❤️ You make ordinary days extraordinary.",
+"❤️ Some moments deserve to be remembered forever.",
 
-"❤️ You are my favorite chapter.",
+"❤️ Every photo is a chapter.",
 
-"❤️ In every lifetime, I would still choose you.",
+"❤️ Every video is a moment frozen in time.",
 
-"❤️ Forever begins with us."
+"❤️ Our story is still being written."
 
 ];
 
 let quoteIndex = 0;
 
-const quoteContainer =
-document.createElement("div");
-
-quoteContainer.style.position =
-"fixed";
-
-quoteContainer.style.bottom =
-"25px";
-
-quoteContainer.style.left =
-"50%";
-
-quoteContainer.style.transform =
-"translateX(-50%)";
-
-quoteContainer.style.padding =
-"12px 25px";
-
-quoteContainer.style.borderRadius =
-"50px";
-
-quoteContainer.style.backdropFilter =
-"blur(20px)";
-
-quoteContainer.style.background =
-"rgba(255,255,255,.08)";
-
-quoteContainer.style.color =
-"white";
-
-quoteContainer.style.zIndex =
-"9999";
-
-document.body.appendChild(
-quoteContainer
+const quoteBanner =
+document.getElementById(
+"quoteBanner"
 );
 
-function changeQuote(){
+function rotateQuote(){
 
-    quoteContainer.innerHTML =
+    quoteBanner.innerHTML =
     quotes[quoteIndex];
 
     quoteIndex++;
@@ -541,92 +532,11 @@ function changeQuote(){
     }
 
 }
-const upload =
-document.getElementById(
-"mediaUpload"
-);
 
-const gallery =
-document.getElementById(
-"gallery"
-);
-
-upload.addEventListener(
-"change",
-event=>{
-
-const files =
-[...event.target.files];
-
-files.forEach(file=>{
-
-const url =
-URL.createObjectURL(file);
-
-const card =
-document.createElement("div");
-
-card.className =
-"memory-card";
-
-if(
-file.type.startsWith(
-"image"
-)
-){
-
-card.innerHTML = `
-<img src="${url}">
-
-<div class="caption">
-
-❤️ ${file.name}
-
-</div>
-`;
-
-card.addEventListener(
-"click",
-()=>{
-
-openLightbox(url);
-
-}
-);
-
-}
-else{
-
-card.innerHTML = `
-<video
-controls
-autoplay
-muted
-loop>
-
-<source
-src="${url}">
-
-</video>
-
-<div class="caption">
-
-🎥 ${file.name}
-
-</div>
-`;
-
-}
-
-gallery.prepend(card);
-
-});
-
-});
-
-changeQuote();
+rotateQuote();
 
 setInterval(
-changeQuote,
-5000
+rotateQuote,
+6000
 );
+`
