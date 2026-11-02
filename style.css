@@ -1,6 +1,6 @@
-/* ===========================
-   GLOBAL
-=========================== */
+/* ========================
+   RESET
+======================== */
 
 *{
     margin:0;
@@ -18,19 +18,21 @@ body{
     "Poppins",
     sans-serif;
 
+    color:white;
+
     background:
     url("background.jpg");
 
     background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
 
-    color:white;
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
 
     overflow-x:hidden;
 
-    position:relative;
 }
 
 /* DARK OVERLAY */
@@ -45,38 +47,16 @@ body::before{
 
     background:
     linear-gradient(
-        rgba(0,0,0,.35),
-        rgba(0,0,0,.60)
+        rgba(0,0,0,.30),
+        rgba(0,0,0,.65)
     );
 
     z-index:-1;
 }
 
-
-/* ===========================
-   SCROLLBAR
-=========================== */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#111;
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:
-    rgba(255,255,255,.25);
-
-    border-radius:50px;
-}
-
-
-/* ===========================
+/* ========================
    MUSIC BUTTON
-=========================== */
+======================== */
 
 .music-btn{
 
@@ -87,21 +67,21 @@ body::before{
 
     z-index:9999;
 
-    padding:12px 20px;
-
     border:none;
+
+    cursor:pointer;
+
+    padding:14px 22px;
 
     border-radius:50px;
 
     background:
-    rgba(255,255,255,.15);
+    rgba(255,255,255,.10);
 
     backdrop-filter:
     blur(20px);
 
     color:white;
-
-    cursor:pointer;
 
     transition:.4s;
 }
@@ -109,16 +89,15 @@ body::before{
 .music-btn:hover{
 
     transform:
-    scale(1.06);
+    scale(1.05);
 
     box-shadow:
-    0 0 25px pink;
+    0 0 20px pink;
 }
 
-
-/* ===========================
+/* ========================
    HERO
-=========================== */
+======================== */
 
 .hero{
 
@@ -130,73 +109,82 @@ body::before{
 
     align-items:center;
 
-    padding:20px;
-}
-
-.hero-card{
-
-    max-width:900px;
-    width:100%;
-
-    padding:60px;
-
     text-align:center;
 
-    border-radius:35px;
+    padding:30px;
+}
+
+.hero-content{
+
+    max-width:900px;
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    padding:10px 25px;
+
+    border-radius:50px;
 
     background:
     rgba(255,255,255,.08);
 
     backdrop-filter:
-    blur(20px);
-
-    border:
-    1px solid rgba(255,255,255,.15);
-
-    box-shadow:
-    0 25px 60px rgba(0,0,0,.35);
-
-    animation:
-    heroFade 2s ease;
+    blur(15px);
 }
 
-.hero-card h1{
+.hero h1{
 
-    font-size:5rem;
+    font-size:6rem;
 
     margin-bottom:20px;
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
 
     text-shadow:
-    0 0 25px pink;
+    0 0 30px rgba(255,255,255,.3);
 }
 
-.hero-card h2{
+.hero h2{
+
+    font-size:1.8rem;
+
+    margin-bottom:30px;
 
     font-weight:300;
-
-    margin-bottom:20px;
-
-    color:#ffd8ef;
 }
 
-.hero-card p{
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
 
     line-height:2;
 
-    font-size:20px;
-
-    margin-bottom:30px;
+    font-size:1.2rem;
 }
 
-.primary-btn{
+/* ========================
+   BUTTON
+======================== */
+
+.hero-btn{
+
+    margin-top:40px;
 
     border:none;
 
     cursor:pointer;
 
-    border-radius:50px;
+    padding:16px 35px;
 
-    padding:15px 35px;
+    border-radius:50px;
 
     color:white;
 
@@ -205,60 +193,39 @@ body::before{
     background:
     linear-gradient(
         45deg,
-        #ff80bf,
-        #ff4fa3
+        #ff69b4,
+        #ff8da1
     );
 
     transition:.4s;
 }
 
-.primary-btn:hover{
+.hero-btn:hover{
 
     transform:
-    translateY(-5px)
-    scale(1.03);
+    translateY(-4px);
 
     box-shadow:
-    0 10px 30px rgba(255,105,180,.5);
+    0 15px 30px
+    rgba(255,105,180,.4);
 }
 
-
-/* ===========================
-   SECTIONS
-=========================== */
+/* ========================
+   GENERAL SECTIONS
+======================== */
 
 .section{
 
     padding:120px 20px;
 }
 
-.section-title{
-
-    text-align:center;
-
-    font-size:50px;
-
-    margin-bottom:50px;
-
-    text-shadow:
-    0 0 20px rgba(255,255,255,.5);
-}
-
-
-/* ===========================
-   STORY CARDS
-=========================== */
-
-.story-card,
-.message-card,
-.future-card,
-.ending-card{
+.glass-card{
 
     max-width:1000px;
 
     margin:auto;
 
-    padding:50px;
+    padding:60px;
 
     border-radius:30px;
 
@@ -269,193 +236,220 @@ body::before{
     blur(20px);
 
     border:
-    1px solid rgba(255,255,255,.15);
+    1px solid rgba(255,255,255,.12);
 
     box-shadow:
-    0 25px 50px rgba(0,0,0,.3);
-
-    transition:.5s;
+    0 20px 50px rgba(0,0,0,.3);
 }
 
-.story-card:hover,
-.message-card:hover,
-.future-card:hover{
-
-    transform:
-    translateY(-10px);
-}
-
-.story-card h2{
+.glass-card h2{
 
     margin-bottom:25px;
 
-    font-size:40px;
-}
-
-.story-card p{
-
-    line-height:2;
-
-    margin-bottom:20px;
-
-    font-size:18px;
-}
-
-
-/* ===========================
-   LOVE MESSAGE
-=========================== */
-
-.love-message{
-
-    padding:100px 20px;
-}
-
-.message-card{
+    font-size:2.7rem;
 
     text-align:center;
 }
 
-.message-card h2{
+.glass-card p{
 
-    margin-bottom:25px;
-
-    font-size:42px;
-}
-
-.message-card p{
-
-    font-size:22px;
+    text-align:center;
 
     line-height:2;
+
+    font-size:1.1rem;
+
+    margin-bottom:15px;
 }
 
-
-/* ===========================
-   ALBUM
-=========================== */
+/* ========================
+   MEMORY FEED
+======================== */
 
 .album-section{
 
-    padding:100px 30px;
+    padding:120px 50px;
 }
 
-.gallery{
+.section-title{
+
+    text-align:center;
+
+    font-size:4rem;
+
+    margin-bottom:20px;
+}
+
+.album-subtitle{
+
+    text-align:center;
+
+    margin-bottom:100px;
+
+    opacity:.85;
+}
+
+#memoryFeed{
+
+    max-width:1400px;
+
+    margin:auto;
+}
+
+.memory-item{
 
     display:grid;
 
     grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(320px,1fr)
-    );
+    1fr 1fr;
 
-    gap:30px;
+    gap:80px;
+
+    align-items:center;
+
+    margin-bottom:180px;
+
+    opacity:0;
+
+    transform:
+    translateY(80px);
+
+    transition:
+    1.5s ease;
 }
 
-/* MEMORY CARD */
+.memory-item.show{
 
-.memory-card{
+    opacity:1;
 
-    position:relative;
+    transform:none;
+}
+
+/* ALTERNATE */
+
+.memory-item:nth-child(even)
+.memory-media{
+
+    order:2;
+}
+
+.memory-item:nth-child(even)
+.memory-text{
+
+    order:1;
+}
+
+/* MEDIA */
+
+.memory-media{
 
     overflow:hidden;
 
-    border-radius:25px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    backdrop-filter:
-    blur(15px);
-
-    border:
-    1px solid rgba(255,255,255,.10);
-
-    transition:.5s;
-
-    cursor:pointer;
-}
-
-.memory-card:hover{
-
-    transform:
-    translateY(-12px)
-    scale(1.03);
+    border-radius:30px;
 
     box-shadow:
-    0 20px 50px
-    rgba(255,105,180,.25);
+    0 25px 50px rgba(0,0,0,.4);
 }
 
-/* SHINE EFFECT */
-
-.memory-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-    linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.25),
-        transparent
-    );
-
-    transform:
-    translateX(-100%);
-
-    transition:1s;
-}
-
-.memory-card:hover::before{
-
-    transform:
-    translateX(100%);
-}
-
-.memory-card img{
+.memory-media img{
 
     width:100%;
 
-    height:350px;
+    display:block;
 
-    object-fit:cover;
+    transition:1s ease;
+}
+
+.memory-media video{
+
+    width:100%;
 
     display:block;
 }
 
-.memory-card video{
+.memory-media:hover img{
 
-    width:100%;
-
-    height:350px;
-
-    object-fit:cover;
-
-    display:block;
+    transform:
+    scale(1.08);
 }
 
-.caption{
+/* TEXT */
 
-    padding:18px;
+.memory-text span{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    letter-spacing:2px;
+
+    color:#ffd6ea;
+}
+
+.memory-text h2{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+}
+
+.memory-text p{
+
+    line-height:2;
+
+    opacity:.9;
+}
+
+/* ========================
+   END SECTION
+======================== */
+
+.ending-section{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     text-align:center;
 
-    background:
-    rgba(0,0,0,.35);
-
-    color:white;
+    padding:40px;
 }
 
+.ending-content small{
 
-/* ===========================
+    letter-spacing:4px;
+
+    opacity:.8;
+}
+
+.ending-content h1{
+
+    font-size:5rem;
+
+    margin:30px 0;
+
+    text-shadow:
+    0 0 20px pink;
+}
+
+.ending-content p{
+
+    font-size:1.2rem;
+
+    line-height:2;
+}
+
+/* ========================
    LIGHTBOX
-=========================== */
+======================== */
 
 .lightbox{
 
@@ -465,11 +459,12 @@ body::before{
 
     inset:0;
 
-    justify-content:center;
-    align-items:center;
-
     background:
     rgba(0,0,0,.95);
+
+    justify-content:center;
+
+    align-items:center;
 
     z-index:99999;
 }
@@ -477,19 +472,17 @@ body::before{
 .lightbox img{
 
     max-width:90%;
+
     max-height:90%;
 
-    border-radius:20px;
-
-    box-shadow:
-    0 0 40px rgba(255,255,255,.25);
+    border-radius:15px;
 }
 
-.close-lightbox{
+#closeLightbox{
 
     position:absolute;
 
-    top:25px;
+    top:20px;
     right:40px;
 
     font-size:50px;
@@ -497,10 +490,39 @@ body::before{
     cursor:pointer;
 }
 
+/* ========================
+   FLOATING QUOTE
+======================== */
 
-/* ===========================
+.quote-banner{
+
+    position:fixed;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:
+    translateX(-50%);
+
+    padding:12px 30px;
+
+    border-radius:50px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:
+    blur(20px);
+
+    z-index:9999;
+
+    font-size:14px;
+}
+
+/* ========================
    LEAVES
-=========================== */
+======================== */
 
 .leaf{
 
@@ -508,11 +530,9 @@ body::before{
 
     top:-50px;
 
-    pointer-events:none;
-
-    font-size:25px;
-
     z-index:999;
+
+    pointer-events:none;
 
     animation:
     fall linear forwards;
@@ -521,6 +541,7 @@ body::before{
 @keyframes fall{
 
     from{
+
         transform:
         translateY(-50px)
         rotate(0deg);
@@ -530,85 +551,47 @@ body::before{
 
         transform:
         translateY(120vh)
-        translateX(180px)
+        translateX(150px)
         rotate(720deg);
 
         opacity:0;
     }
 }
 
-
-/* ===========================
+/* ========================
    FIREFLIES
-=========================== */
+======================== */
 
 .firefly{
 
     position:fixed;
 
     width:6px;
+
     height:6px;
 
     border-radius:50%;
 
-    background:#ffeaa7;
+    background:#fff0b3;
 
     box-shadow:
-    0 0 20px #ffeaa7;
+    0 0 15px #fff0b3;
 
     animation:
-    fireflyGlow 3s infinite;
+    glow 3s infinite;
 }
 
-@keyframes fireflyGlow{
+@keyframes glow{
 
     50%{
 
-        opacity:.15;
-
-        transform:
-        scale(.8);
-    }
-
-}
-
-
-/* ===========================
-   FLOATING HEARTS
-=========================== */
-
-.floating-heart{
-
-    position:fixed;
-
-    bottom:-50px;
-
-    font-size:25px;
-
-    z-index:9999;
-
-    pointer-events:none;
-
-    animation:
-    floatHeart 8s linear forwards;
-}
-
-@keyframes floatHeart{
-
-    to{
-
-        transform:
-        translateY(-120vh)
-        rotate(360deg);
-
-        opacity:0;
+        opacity:.25;
     }
 }
 
-
-/* ===========================
-   REVEAL ANIMATION
-=========================== */
+/* ========================
+   REVEAL EFFECT
+======================== */
 
 .reveal{
 
@@ -625,294 +608,58 @@ body::before{
 
     opacity:1;
 
-    transform:
-    translateY(0);
+    transform:none;
 }
 
-
-/* ===========================
-   HERO ENTRANCE
-=========================== */
-
-@keyframes heroFade{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        translateY(80px)
-        scale(.95);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-        translateY(0)
-        scale(1);
-    }
-}
-
-
-/* ===========================
-   FINAL MESSAGE
-=========================== */
-
-.final-message{
-
-    text-align:center;
-}
-
-.final-message h1{
-
-    font-size:70px;
-
-    color:#ffd0ea;
-
-    text-shadow:
-    0 0 25px pink;
-
-    animation:
-    heartbeat 2s infinite;
-}
-
-@keyframes heartbeat{
-
-    50%{
-
-        transform:
-        scale(1.05);
-    }
-}
-
-
-/* ===========================
+/* ========================
    MOBILE
-=========================== */
+======================== */
 
-@media (max-width:768px){
+@media(max-width:900px){
 
-    .hero-card{
+    .hero h1{
 
-        padding:35px;
+        font-size:4rem;
     }
 
-    .hero-card h1{
+    .memory-item{
 
-        font-size:3rem;
+        grid-template-columns:
+        1fr;
+
+        gap:40px;
     }
 
-    .hero-card h2{
+    .memory-item:nth-child(even)
+    .memory-media{
 
-        font-size:1.2rem;
+        order:1;
+    }
+
+    .memory-item:nth-child(even)
+    .memory-text{
+
+        order:2;
+    }
+
+    .memory-text h2{
+
+        font-size:2.2rem;
     }
 
     .section-title{
 
-        font-size:35px;
+        font-size:2.5rem;
     }
 
-    .story-card,
-    .message-card,
-    .future-card,
-    .ending-card{
+    .glass-card{
 
-        padding:30px;
+        padding:35px;
     }
 
-    .final-message h1{
+    .ending-content h1{
 
-        font-size:40px;
+        font-size:3rem;
     }
 }
-.album-section{
-
-    padding:120px 40px;
-}
-
-.section-title{
-
-    text-align:center;
-
-    font-size:3rem;
-
-    margin-bottom:10px;
-}
-
-.album-subtitle{
-
-    text-align:center;
-
-    opacity:.8;
-
-    margin-bottom:50px;
-}
-
-.upload-container{
-
-    display:flex;
-
-    justify-content:center;
-
-    margin-bottom:60px;
-}
-
-.upload-box{
-
-    width:350px;
-
-    padding:40px;
-
-    text-align:center;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    transition:.4s;
-
-    background:
-    rgba(255,255,255,.08);
-
-    backdrop-filter:
-    blur(20px);
-
-    border:
-    1px solid rgba(255,255,255,.15);
-}
-
-.upload-box:hover{
-
-    transform:
-    translateY(-10px);
-
-    box-shadow:
-    0 15px 50px rgba(255,105,180,.2);
-}
-
-.upload-icon{
-
-    font-size:4rem;
-
-    margin-bottom:15px;
-}
-
-/* GALLERY */
-
-.gallery{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fill,minmax(320px,1fr));
-
-    gap:25px;
-}
-
-/* CARD */
-
-.memory-card{
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    backdrop-filter:
-    blur(12px);
-
-    transition:.5s;
-
-    cursor:pointer;
-}
-
-.memory-card:hover{
-
-    transform:
-    translateY(-10px)
-    scale(1.02);
-}
-
-.memory-card img{
-
-    width:100%;
-
-    height:350px;
-
-    object-fit:cover;
-
-    transition:.6s;
-}
-
-.memory-card:hover img{
-
-    transform:scale(1.08);
-}
-
-.memory-card video{
-
-    width:100%;
-
-    height:350px;
-
-    object-fit:cover;
-}
-
-/* CAPTION */
-
-.caption{
-
-    position:absolute;
-
-    left:0;
-    right:0;
-    bottom:0;
-
-    padding:15px;
-
-    color:white;
-
-    background:
-
-    linear-gradient(
-    transparent,
-    rgba(0,0,0,.9)
-    );
-}
-
-/* SHINE EFFECT */
-
-.memory-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,.25),
-    transparent
-    );
-
-    transform:
-    translateX(-100%);
-
-    transition:1s;
-}
-
-.memory-card:hover::before{
-
-    transform:
-    translateX(100%);
-}
+``
