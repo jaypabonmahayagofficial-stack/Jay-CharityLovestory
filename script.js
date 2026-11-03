@@ -1008,45 +1008,35 @@ createPetal,
 /* ==========================================
    FIREFLIES
 ========================================== */
-
 const fireflyLayer =
 document.getElementById(
 "fireflyLayer"
 );
 
-for(
-let i=0;
-i<35;
-i++
-){
+for(let i=0;i<80;i++){
 
-const firefly =
-document.createElement(
-"div"
-);
+    const firefly =
+    document.createElement("div");
 
-firefly.className =
-"firefly";
+    firefly.className =
+    "firefly";
 
-firefly.style.left =
-Math.random()*100
-+"vw";
+    firefly.style.left =
+    Math.random()*100 + "vw";
 
-firefly.style.top =
-Math.random()*100
-+"vh";
+    firefly.style.top =
+    Math.random()*100 + "vh";
 
-firefly.style.animationDelay =
-Math.random()*5
-+"s";
+    firefly.style.setProperty(
+        "--speed",
+        (8 + Math.random()*12) + "s"
+    );
 
-fireflyLayer
-.appendChild(
-firefly
-);
+    fireflyLayer.appendChild(
+        firefly
+    );
 
 }
-
 
 /* ==========================================
    FLOATING HEARTS
