@@ -12,22 +12,33 @@ window.addEventListener(
 
 const loader =
 document.getElementById(
-"loader"
+    "loader"
 );
 
 setTimeout(()=>{
 
-loader.style.opacity="0";
+    loader.style.opacity="0";
 
-setTimeout(()=>{
+    setTimeout(()=>{
 
-loader.style.display="none";
+        loader.style.display="none";
 
-document.body.classList.remove(
-"loading"
-);
+        document.body.classList.remove(
+            "loading"
+        );
 
-},1000);
+        // Auto-play music after loader
+        if (bgMusic) {
+            bgMusic.volume = 0.6;
+            bgMusic.play().then(() => {
+                musicBtn.innerHTML = "♫ Pause Music";
+                musicBtn.classList.add("playing");
+            }).catch(() => {
+                // Autoplay blocked, user needs to click
+            });
+        }
+
+    },1000);
 
 },3000);
 
@@ -45,6 +56,8 @@ const bgMusic =
 document.getElementById(
     "bgMusic"
 );
+
+bgMusic.volume = 0.5;
 
 musicBtn.addEventListener(
     "click",
