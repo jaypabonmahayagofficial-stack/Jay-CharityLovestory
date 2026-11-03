@@ -60,29 +60,33 @@ button{
 
 
 /* ======================================
-   MAIN BACKGROUND
+   MAIN BACKGROUND IMAGE
 ====================================== */
 
 .background-scene{
 
     position:fixed;
 
-    inset:0;
+    top:0;
+    left:0;
 
-    z-index:-20;
+    width:100%;
+    height:100%;
+
+    z-index:-10;
 
     background:
 
     linear-gradient(
-        rgba(16,11,27,.45),
-        rgba(16,11,27,.65)
+        rgba(10,5,20,.45),
+        rgba(10,5,20,.70)
     ),
 
     url("background.jpg");
 
     background-size:cover;
 
-    background-position:center;
+    background-position:center center;
 
     background-repeat:no-repeat;
 
