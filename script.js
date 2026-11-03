@@ -81,7 +81,7 @@ const memories = [
 
 {
     type:"image",
-    file:"photos/photo1.jpg",
+    file:"photos/Photo1.jpeg",
     title:"The Beginning",
     text:"Where our story began."
 },
