@@ -1,550 +1,1006 @@
-
-/* =====================================================
+/* ==========================================
    LOADER
-===================================================== */
+========================================== */
 
 window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
+
+    const loader =
+    document.getElementById("loader");
 
     setTimeout(() => {
+
         loader.classList.add("hide");
-    }, 1500);
+
+        document.body.classList.add(
+            "loaded"
+        );
+
+    }, 3200);
+
 });
 
 
-/* =====================================================
-   MUSIC
-===================================================== */
+/* ==========================================
+   MUSIC PLAYER
+========================================== */
 
-const musicBtn = document.getElementById("musicBtn");
-const bgMusic = document.getElementById("bgMusic");
+const musicBtn =
+document.getElementById(
+    "musicBtn"
+);
 
-musicBtn.addEventListener("click", async () => {
-    if (bgMusic.paused) {
-        try {
-            await bgMusic.play();
-            musicBtn.innerHTML = "♫ Pause Music";
-        } catch (error) {
-            musicBtn.innerHTML = "♫ Play Music";
+const bgMusic =
+document.getElementById(
+    "bgMusic"
+);
+
+musicBtn.addEventListener(
+    "click",
+    async () => {
+
+        if (bgMusic.paused) {
+
+            try {
+
+                await bgMusic.play();
+
+                musicBtn.innerHTML =
+                "♫ Pause Music";
+
+            } catch (error) {
+
+                console.error(
+                    error
+                );
+
+            }
+
+        } else {
+
+            bgMusic.pause();
+
+            musicBtn.innerHTML =
+            "♫ Play Music";
+
         }
-    } else {
-        bgMusic.pause();
-        musicBtn.innerHTML = "♫ Play Music";
+
     }
-});
-
-bgMusic.addEventListener("ended", () => {
-    musicBtn.innerHTML = "♫ Play Music";
-});
+);
 
 
-/* =====================================================
-   MEMORIES
-   EDIT THIS SECTION TO ADD YOUR PHOTOS AND VIDEOS
-===================================================== */
+/* ==========================================
+   MEMORY DATABASE
+========================================== */
+
+/*
+EDIT ONLY THIS SECTION
+ADD YOUR PHOTOS / VIDEOS HERE
+*/
 
 const memories = [
 
-    {
-        type: "image",
-        file: "photos/photo1.jpg",
-        title: "The Beginning",
-        text: "Where one unforgettable chapter started."
-    },
+{
+    type:"image",
+    file:"photos/photo1.jpg",
+    title:"The Beginning",
+    text:"Where our story began."
+},
 
-    {
-        type: "image",
-        file: "photos/photo2.jpg",
-        title: "Favorite Day",
-        text: "One of our most treasured memories."
-    },
+{
+    type:"image",
+    file:"photos/photo2.jpg",
+    title:"Favorite Day",
+    text:"A day worth remembering forever."
+},
 
-    {
-        type: "image",
-        file: "photos/photo3.jpg",
-        title: "Adventure Together",
-        text: "Every adventure became a story."
-    },
+{
+    type:"image",
+    file:"photos/photo3.jpg",
+    title:"Adventure Together",
+    text:"Exploring life side by side."
+},
 
-    {
-        type: "video",
-        file: "videos/video1.mp4",
-        title: "Road Trip",
-        text: "Captured forever in motion."
-    },
+{
+    type:"video",
+    file:"videos/video1.mp4",
+    title:"Road Trip",
+    text:"Captured forever in motion."
+},
 
-    {
-        type: "video",
-        file: "videos/video2.mp4",
-        title: "Special Moment",
-        text: "A memory worth revisiting."
-    }
+{
+    type:"video",
+    file:"videos/video2.mp4",
+    title:"Special Moment",
+    text:"A memory we'll always treasure."
+}
 
 ];
 
 
-/* =====================================================
-   STATS COUNTERS
-===================================================== */
+/* ==========================================
+   COUNTERS
+========================================== */
 
-const photos = memories.filter(item => item.type === "image");
-const videos = memories.filter(item => item.type === "video");
+const photos =
+memories.filter(
+m => m.type === "image"
+);
 
-function animateCounter(elementId, target) {
-    const element = document.getElementById(elementId);
+const videos =
+memories.filter(
+m => m.type === "video"
+);
 
-    if (!element) return;
+function animateCounter(
+id,
+target
+){
 
-    let count = 0;
+    const el =
+    document.getElementById(id);
 
-    const interval = setInterval(() => {
-        count++;
-        element.textContent = count;
+    let value = 0;
 
-        if (count >= target) {
-            clearInterval(interval);
+    const timer =
+    setInterval(() => {
+
+        value++;
+
+        el.textContent =
+        value;
+
+        if(
+            value >= target
+        ){
+
+            clearInterval(timer);
+
         }
-    }, 80);
+
+    },80);
+
 }
 
-animateCounter("photoCount", photos.length);
-animateCounter("videoCount", videos.length);
-animateCounter("memoryCount", memories.length);
+animateCounter(
+"photoCount",
+photos.length
+);
 
-document.getElementById("galleryCount").textContent =
-    `${photos.length} memories`;
+animateCounter(
+"videoCount",
+videos.length
+);
+
+animateCounter(
+"memoryCount",
+memories.length
+);
+
+document.getElementById(
+"galleryCount"
+).textContent =
+
+`${photos.length} photos`;
 
 
-/* =====================================================
-   FEATURED MEMORY SLIDESHOW
-===================================================== */
+/* ==========================================
+   FEATURED SLIDER
+========================================== */
 
-const featuredMedia = document.getElementById("featuredMedia");
-const featuredTitle = document.getElementById("featuredTitle");
-const featuredText = document.getElementById("featuredText");
-const featuredNumber = document.getElementById("featuredNumber");
-const featuredDots = document.getElementById("featuredDots");
+const featuredMedia =
+document.getElementById(
+"featuredMedia"
+);
+
+const featuredTitle =
+document.getElementById(
+"featuredTitle"
+);
+
+const featuredText =
+document.getElementById(
+"featuredText"
+);
+
+const featuredNumber =
+document.getElementById(
+"featuredNumber"
+);
+
+const featuredDots =
+document.getElementById(
+"featuredDots"
+);
 
 let featuredIndex = 0;
-let featuredTimer;
 
-function createFeaturedDots() {
+function buildDots(){
+
     featuredDots.innerHTML = "";
 
-    memories.forEach((memory, index) => {
-        const dot = document.createElement("button");
+    memories.forEach(
+    (_,index)=>{
 
-        dot.className = "featured-dot";
-        dot.setAttribute("aria-label", `Show memory ${index + 1}`);
+        const dot =
+        document.createElement(
+        "button"
+        );
 
-        dot.addEventListener("click", () => {
-            featuredIndex = index;
+        dot.className =
+        "featured-dot";
+
+        dot.addEventListener(
+        "click",
+        ()=>{
+
+            featuredIndex =
+            index;
+
             updateFeatured();
-            resetFeaturedTimer();
+
         });
 
-        featuredDots.appendChild(dot);
+        featuredDots.appendChild(
+        dot
+        );
+
     });
+
 }
 
-function updateFeatured() {
-    if (!memories.length) return;
+function updateFeatured(){
 
-    const memory = memories[featuredIndex];
+    const memory =
+    memories[featuredIndex];
 
-    featuredTitle.textContent = memory.title;
-    featuredText.textContent = memory.text;
+    featuredTitle.textContent =
+    memory.title;
+
+    featuredText.textContent =
+    memory.text;
+
     featuredNumber.textContent =
-        `MEMORY ${String(featuredIndex + 1).padStart(2, "0")}`;
+    `MEMORY ${String(
+        featuredIndex + 1
+    ).padStart(2,"0")}`;
 
-    featuredMedia.innerHTML = "";
+    featuredMedia.innerHTML =
+    "";
 
     let media;
 
-    if (memory.type === "image") {
-        media = document.createElement("img");
-        media.src = memory.file;
-        media.alt = memory.title;
-    } else {
-        media = document.createElement("video");
+    if(
+    memory.type ===
+    "image"
+    ){
+
+        media =
+        document.createElement(
+        "img"
+        );
+
+        media.src =
+        memory.file;
+
+        media.alt =
+        memory.title;
+
+    }
+    else{
+
+        media =
+        document.createElement(
+        "video"
+        );
+
         media.autoplay = true;
-        media.muted = true;
         media.loop = true;
+        media.muted = true;
         media.playsInline = true;
 
-        const source = document.createElement("source");
-        source.src = memory.file;
-        source.type = "video/mp4";
+        media.src =
+        memory.file;
 
-        media.appendChild(source);
     }
 
-    featuredMedia.appendChild(media);
+    featuredMedia.appendChild(
+        media
+    );
 
-    [...featuredDots.children].forEach((dot, index) => {
-        dot.classList.toggle("active", index === featuredIndex);
+    [...featuredDots.children]
+    .forEach(
+    (dot,index)=>{
+
+        dot.classList.toggle(
+        "active",
+        index===featuredIndex
+        );
+
     });
+
 }
 
-function nextFeatured() {
-    featuredIndex = (featuredIndex + 1) % memories.length;
+function nextFeatured(){
+
+    featuredIndex++;
+
+    if(
+    featuredIndex >=
+    memories.length
+    ){
+
+        featuredIndex = 0;
+
+    }
+
     updateFeatured();
+
 }
 
-function previousFeatured() {
-    featuredIndex = (featuredIndex - 1 + memories.length) % memories.length;
+function prevFeatured(){
+
+    featuredIndex--;
+
+    if(
+    featuredIndex < 0
+    ){
+
+        featuredIndex =
+        memories.length - 1;
+
+    }
+
     updateFeatured();
+
 }
 
-function resetFeaturedTimer() {
-    clearInterval(featuredTimer);
-    featuredTimer = setInterval(nextFeatured, 7000);
-}
-
-document.getElementById("featuredNext").addEventListener("click", () => {
-    nextFeatured();
-    resetFeaturedTimer();
-});
-
-document.getElementById("featuredPrev").addEventListener("click", () => {
-    previousFeatured();
-    resetFeaturedTimer();
-});
-
-createFeaturedDots();
+buildDots();
 updateFeatured();
-resetFeaturedTimer();
+
+document
+.getElementById(
+"featuredNext"
+)
+.addEventListener(
+"click",
+nextFeatured
+);
+
+document
+.getElementById(
+"featuredPrev"
+)
+.addEventListener(
+"click",
+prevFeatured
+);
+
+setInterval(
+nextFeatured,
+7000
+);
 
 
-/* =====================================================
-   PHOTO AND VIDEO GALLERIES
-===================================================== */
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
 
-const photoGallery = document.getElementById("photoGallery");
-const videoGallery = document.getElementById("videoGallery");
+const photoGallery =
+document.getElementById(
+"photoGallery"
+);
 
-function createMemoryCard(memory, index) {
-    const card = document.createElement("div");
-    card.className = "memory-card";
+photos.forEach(
+(memory,index)=>{
 
-    const imageWrap = document.createElement("div");
-    imageWrap.className = "memory-image-wrap";
+const card =
+document.createElement(
+"div"
+);
 
-    if (memory.type === "image") {
-        const image = document.createElement("img");
+card.className =
+"memory-card";
 
-        image.src = memory.file;
-        image.alt = memory.title;
-        image.loading = "lazy";
+card.innerHTML = `
 
-        imageWrap.appendChild(image);
+<div class="memory-image-wrap">
 
-        card.addEventListener("click", () => {
-            openLightbox(index);
-        });
+<img
+src="${memory.file}"
+alt="${memory.title}">
 
-        card.setAttribute("tabindex", "0");
-        card.setAttribute("role", "button");
-        card.setAttribute("aria-label", `Open ${memory.title}`);
+</div>
 
-        card.addEventListener("keydown", event => {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                openLightbox(index);
-            }
-        });
+<div class="memory-content">
 
-    } else {
-        const video = document.createElement("video");
+<span class="memory-tag">
+PHOTO MEMORY
+</span>
 
-        video.src = memory.file;
-        video.muted = true;
-        video.loop = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        video.preload = "metadata";
+<h3>
+${memory.title}
+</h3>
 
-        imageWrap.appendChild(video);
-    }
+<p>
+${memory.text}
+</p>
 
-    const content = document.createElement("div");
-    content.className = "memory-content";
+</div>
 
-    const tag = document.createElement("span");
-    tag.className = "memory-tag";
-    tag.textContent = memory.type === "image" ? "PHOTO MEMORY" : "VIDEO MEMORY";
+`;
 
-    const title = document.createElement("h3");
-    title.textContent = memory.title;
+card.addEventListener(
+"click",
+()=>{
 
-    const text = document.createElement("p");
-    text.textContent = memory.text;
+openLightbox(index);
 
-    content.append(tag, title, text);
-    card.append(imageWrap, content);
-
-    return card;
 }
+);
 
-memories.forEach((memory, index) => {
-    const card = createMemoryCard(memory, index);
+photoGallery.appendChild(
+card
+);
 
-    if (memory.type === "image") {
-        photoGallery.appendChild(card);
-    } else {
-        videoGallery.appendChild(card);
-    }
 });
 
 
-/* =====================================================
-   LIGHTBOX ALBUM
-===================================================== */
+/* ==========================================
+   VIDEO GALLERY
+========================================== */
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const lightboxTitle = document.getElementById("lightboxTitle");
-const lightboxText = document.getElementById("lightboxText");
-const lightboxCounter = document.getElementById("lightboxCounter");
+const videoGallery =
+document.getElementById(
+"videoGallery"
+);
 
-let lightboxIndex = 0;
-let previousFocus = null;
+videos.forEach(
+memory=>{
 
-function openLightbox(index) {
-    lightboxIndex = index;
-    previousFocus = document.activeElement;
+const card =
+document.createElement(
+"div"
+);
+
+card.className =
+"memory-card";
+
+card.innerHTML = `
+
+<div class="memory-image-wrap">
+
+<video
+muted
+autoplay
+loop
+playsinline>
+
+<source
+src="${memory.file}"
+type="video/mp4">
+
+</video>
+
+</div>
+
+<div class="memory-content">
+
+<span class="memory-tag">
+
+VIDEO MEMORY
+
+</span>
+
+<h3>
+
+${memory.title}
+
+</h3>
+
+<p>
+
+${memory.text}
+
+</p>
+
+</div>
+
+`;
+
+videoGallery.appendChild(
+card
+);
+
+});
+
+
+/* ==========================================
+   LIGHTBOX
+========================================== */
+
+const lightbox =
+document.getElementById(
+"lightbox"
+);
+
+const lightboxImg =
+document.getElementById(
+"lightboxImg"
+);
+
+const lightboxTitle =
+document.getElementById(
+"lightboxTitle"
+);
+
+const lightboxText =
+document.getElementById(
+"lightboxText"
+);
+
+const lightboxCounter =
+document.getElementById(
+"lightboxCounter"
+);
+
+let currentPhoto = 0;
+
+function openLightbox(index){
+
+    currentPhoto =
+    index;
 
     updateLightbox();
 
-    lightbox.classList.add("open");
-    lightbox.setAttribute("aria-hidden", "false");
+    lightbox.classList.add(
+    "open"
+    );
 
-    document.body.style.overflow = "hidden";
+    document.body.style
+    .overflow = "hidden";
 
-    document.getElementById("closeLightbox").focus();
 }
 
-function updateLightbox() {
-    const memory = photos[lightboxIndex];
+function updateLightbox(){
 
-    if (!memory) return;
+    const memory =
+    photos[currentPhoto];
 
-    lightboxImg.src = memory.file;
-    lightboxImg.alt = memory.title;
-    lightboxTitle.textContent = memory.title;
-    lightboxText.textContent = memory.text;
+    lightboxImg.src =
+    memory.file;
+
+    lightboxTitle.textContent =
+    memory.title;
+
+    lightboxText.textContent =
+    memory.text;
 
     lightboxCounter.textContent =
-        `${lightboxIndex + 1} / ${photos.length}`;
+
+    `${currentPhoto + 1}
+     /
+     ${photos.length}`;
+
 }
 
-function nextLightbox() {
-    lightboxIndex = (lightboxIndex + 1) % photos.length;
-    updateLightbox();
-}
+function nextPhoto(){
 
-function previousLightbox() {
-    lightboxIndex = (lightboxIndex - 1 + photos.length) % photos.length;
-    updateLightbox();
-}
+    currentPhoto++;
 
-function closeLightbox() {
-    lightbox.classList.remove("open");
-    lightbox.setAttribute("aria-hidden", "true");
+    if(
+    currentPhoto >=
+    photos.length
+    ){
 
-    document.body.style.overflow = "";
+        currentPhoto = 0;
 
-    if (previousFocus) {
-        previousFocus.focus();
     }
+
+    updateLightbox();
+
 }
 
-document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
-document.getElementById("lightboxNext").addEventListener("click", nextLightbox);
-document.getElementById("lightboxPrev").addEventListener("click", previousLightbox);
+function previousPhoto(){
 
-lightbox.addEventListener("click", event => {
-    if (event.target === lightbox) {
-        closeLightbox();
+    currentPhoto--;
+
+    if(
+    currentPhoto < 0
+    ){
+
+        currentPhoto =
+        photos.length - 1;
+
     }
+
+    updateLightbox();
+
+}
+
+function closeLightbox(){
+
+    lightbox.classList.remove(
+    "open"
+    );
+
+    document.body.style
+    .overflow = "";
+
+}
+
+document
+.getElementById(
+"closeLightbox"
+)
+.addEventListener(
+"click",
+closeLightbox
+);
+
+document
+.getElementById(
+"lightboxNext"
+)
+.addEventListener(
+"click",
+nextPhoto
+);
+
+document
+.getElementById(
+"lightboxPrev"
+)
+.addEventListener(
+"click",
+previousPhoto
+);
+
+lightbox.addEventListener(
+"click",
+e=>{
+
+if(
+e.target===lightbox
+){
+
+closeLightbox();
+
+}
+
 });
 
-document.addEventListener("keydown", event => {
-    if (!lightbox.classList.contains("open")) return;
+document.addEventListener(
+"keydown",
+e=>{
 
-    if (event.key === "Escape") closeLightbox();
-    if (event.key === "ArrowRight") nextLightbox();
-    if (event.key === "ArrowLeft") previousLightbox();
+if(
+!lightbox.classList
+.contains("open")
+)
+return;
+
+if(e.key==="Escape")
+closeLightbox();
+
+if(e.key==="ArrowRight")
+nextPhoto();
+
+if(e.key==="ArrowLeft")
+previousPhoto();
+
 });
 
 
-/* =====================================================
+/* ==========================================
    SCROLL REVEAL
-===================================================== */
+========================================== */
 
-const revealElements = document.querySelectorAll(".reveal");
+const revealItems =
+document.querySelectorAll(
+".reveal"
+);
 
-if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.12
-    });
+const revealObserver =
+new IntersectionObserver(
 
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-} else {
-    revealElements.forEach(element => {
-        element.classList.add("active");
-    });
+(entries)=>{
+
+entries.forEach(
+entry=>{
+
+if(
+entry.isIntersecting
+){
+
+entry.target.classList
+.add("active");
+
 }
 
+});
 
-/* =====================================================
-   FLOATING QUOTES
-===================================================== */
+},
+
+{
+threshold:.15
+}
+
+);
+
+revealItems.forEach(
+item=>{
+
+revealObserver.observe(
+item
+);
+
+}
+);
+
+
+/* ==========================================
+   QUOTES
+========================================== */
 
 const quotes = [
-    "❤️ Every memory tells a story.",
-    "❤️ Every picture is a chapter.",
-    "❤️ Every adventure becomes a memory.",
-    "❤️ Some moments deserve to last forever.",
-    "❤️ Memories are life's greatest treasures.",
-    "❤️ Our story is still being written."
+
+"❤️ Every memory tells a story.",
+
+"❤️ Every photo is a chapter.",
+
+"❤️ Every adventure becomes a treasure.",
+
+"❤️ Love lives in the little moments.",
+
+"❤️ The best days become forever memories.",
+
+"❤️ Our story is still being written."
+
 ];
 
-const quoteBanner = document.getElementById("quoteBanner");
+const quoteBanner =
+document.getElementById(
+"quoteBanner"
+);
 
 let quoteIndex = 0;
 
-function rotateQuote() {
-    quoteBanner.style.opacity = "0";
+function rotateQuote(){
 
-    setTimeout(() => {
-        quoteBanner.textContent = quotes[quoteIndex];
+quoteBanner.style.opacity =
+0;
 
-        quoteIndex = (quoteIndex + 1) % quotes.length;
+setTimeout(()=>{
 
-        quoteBanner.style.opacity = "1";
-    }, 500);
+quoteBanner.textContent =
+quotes[quoteIndex];
+
+quoteIndex++;
+
+if(
+quoteIndex >=
+quotes.length
+){
+
+quoteIndex = 0;
+
+}
+
+quoteBanner.style.opacity =
+1;
+
+},300);
+
 }
 
 rotateQuote();
-setInterval(rotateQuote, 6000);
+
+setInterval(
+rotateQuote,
+6000
+);
 
 
-/* =====================================================
-   FALLING CHERRY BLOSSOMS
-===================================================== */
+/* ==========================================
+   PETALS
+========================================== */
 
-const petalLayer = document.getElementById("petalLayer");
+const petalLayer =
+document.getElementById(
+"petalLayer"
+);
 
-const petals = ["🌸", "✿", "❀", "🍂"];
+const petalCollection =
 
-function createPetal() {
-    const petal = document.createElement("span");
+["🌸","❀","✿","🍂"];
 
-    petal.className = "petal";
-    petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+function createPetal(){
 
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.fontSize = (10 + Math.random() * 14) + "px";
+const petal =
+document.createElement(
+"span"
+);
 
-    petal.style.animationDuration = (8 + Math.random() * 8) + "s";
-    petal.style.setProperty(
-        "--drift",
-        (Math.random() * 250 - 125) + "px"
-    );
+petal.className =
+"petal";
 
-    petalLayer.appendChild(petal);
+petal.textContent =
 
-    setTimeout(() => petal.remove(), 17000);
+petalCollection[
+Math.floor(
+Math.random() *
+petalCollection.length
+)
+];
+
+petal.style.left =
+Math.random()*100+"vw";
+
+petal.style.fontSize =
+(10 + Math.random()*15)
++"px";
+
+petal.style.animationDuration =
+(8 + Math.random()*8)
++"s";
+
+petal.style.setProperty(
+"--drift",
+(Math.random()*250-125)
++"px"
+);
+
+petalLayer.appendChild(
+petal
+);
+
+setTimeout(()=>{
+
+petal.remove();
+
+},17000);
+
 }
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(createPetal, 500);
-}
+setInterval(
+createPetal,
+500
+);
 
 
-/* =====================================================
+/* ==========================================
    FIREFLIES
-===================================================== */
+========================================== */
 
-const fireflyLayer = document.getElementById("fireflyLayer");
+const fireflyLayer =
+document.getElementById(
+"fireflyLayer"
+);
 
-for (let i = 0; i < 35; i++) {
-    const firefly = document.createElement("div");
+for(
+let i=0;
+i<35;
+i++
+){
 
-    firefly.className = "firefly";
+const firefly =
+document.createElement(
+"div"
+);
 
-    firefly.style.left = Math.random() * 100 + "vw";
-    firefly.style.top = Math.random() * 100 + "vh";
-    firefly.style.animationDelay = Math.random() * 4 + "s";
-    firefly.style.animationDuration = (2 + Math.random() * 4) + "s";
+firefly.className =
+"firefly";
 
-    fireflyLayer.appendChild(firefly);
+firefly.style.left =
+Math.random()*100
++"vw";
+
+firefly.style.top =
+Math.random()*100
++"vh";
+
+firefly.style.animationDelay =
+Math.random()*5
++"s";
+
+fireflyLayer
+.appendChild(
+firefly
+);
+
 }
 
 
-/* =====================================================
+/* ==========================================
    FLOATING HEARTS
-===================================================== */
+========================================== */
 
-const heartLayer = document.getElementById("heartLayer");
+const heartLayer =
+document.getElementById(
+"heartLayer"
+);
 
-function createHeart() {
-    const heart = document.createElement("span");
+function createHeart(){
 
-    heart.className = "floating-heart";
-    heart.textContent = Math.random() > .5 ? "♥" : "♡";
+const heart =
+document.createElement(
+"span"
+);
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (12 + Math.random() * 20) + "px";
-    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+heart.className =
+"floating-heart";
 
-    heartLayer.appendChild(heart);
+heart.textContent =
+Math.random() > .5
+? "♥"
+: "♡";
 
-    setTimeout(() => heart.remove(), 12000);
+heart.style.left =
+Math.random()*100
++"vw";
+
+heart.style.fontSize =
+(12 + Math.random()*18)
++"px";
+
+heart.style.animationDuration =
+(6 + Math.random()*5)
++"s";
+
+heartLayer.appendChild(
+heart
+);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},12000);
+
 }
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(createHeart, 4000);
-}
-/* =====================================================
-   HEART LOADER
-===================================================== */
+setInterval(
+createHeart,
+4000
+);
 
-window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
 
-    // Keep the loader visible until the heart has filled.
-    setTimeout(() => {
-        loader.classList.add("hide");
-    }, 2600);
+/* ==========================================
+   HERO PARALLAX
+========================================== */
+
+const hero =
+document.querySelector(
+".hero-content"
+);
+
+if(
+window.matchMedia(
+"(hover:hover)"
+).matches
+){
+
+document.addEventListener(
+"mousemove",
+e=>{
+
+const x =
+e.clientX /
+window.innerWidth
+-.5;
+
+const y =
+e.clientY /
+window.innerHeight
+-.5;
+
+hero.style.transform =
+
+`translate(
+${x*12}px,
+${y*12}px
+)`;
+
 });
 
-
-/* =====================================================
-   HERO PARALLAX
-===================================================== */
-
-const hero = document.querySelector(".hero-content");
-
-if (window.matchMedia("(hover: hover)").matches) {
-    document.addEventListener("mousemove", event => {
-        if (!hero) return;
-
-        const x = event.clientX / window.innerWidth - .5;
-        const y = event.clientY / window.innerHeight - .5;
-
-        hero.style.transform = `
-            translate(${x * 12}px, ${y * 12}px)
-        `;
-    });
 }
