@@ -182,7 +182,14 @@ a {
 /* =========================
    LOADER
 ========================= */
-
+.background-scene {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(15, 8, 25, 0.25), rgba(15, 8, 25, 0.55)),
+        url("images/your-background.jpg") center / cover no-repeat;
+}
 #loader {
     position: fixed;
     inset: 0;
