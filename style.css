@@ -267,36 +267,29 @@ button{
 #loader{
 
     position:fixed;
-
     inset:0;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     z-index:99999;
 
     background:
-
     radial-gradient(
         circle,
         #2d1737,
-        #100b1b 85%
+        #100b1b 80%
     );
 
     transition:
-
-    opacity 1.2s ease,
-
-    visibility 1.2s ease;
+    opacity 1s ease,
+    visibility 1s ease;
 }
 
 #loader.hide{
 
     opacity:0;
-
     visibility:hidden;
 }
 
@@ -305,243 +298,63 @@ button{
     text-align:center;
 }
 
-.heart-glass{
-
-    width:190px;
-
-    margin:auto;
-
-    position:relative;
-
-    animation:
-
-    heartFloat 3s ease-in-out infinite;
-}
-
-/* HEART */
-
-.heart-svg{
-
-    width:100%;
-}
-
-.heart-outline{
-
-    fill:
-
-    rgba(255,255,255,.05);
-
-    stroke:
-
-    rgba(255,255,255,.85);
-
-    stroke-width:2.5;
-}
-
-.heart-shine{
-
-    fill:none;
-
-    stroke:
-
-    rgba(255,255,255,.9);
-
-    stroke-width:3;
-
-    stroke-linecap:round;
-}
-
-/* WATER */
-
-.liquid-fill{
-
-    transform:
-    translateY(100px);
-
-    animation:
-    waterRise 3s ease forwards;
-}
-
-.liquid-wave{
-
-    opacity:.8;
-
-    animation:
-    waveBounce 2s infinite ease-in-out;
-}
-
-@keyframes waterRise{
-
-    from{
-
-        transform:
-        translateY(100px);
-    }
-
-    to{
-
-        transform:
-        translateY(18px);
-    }
-}
-
-@keyframes waveBounce{
-
-    0%,100%{
-
-        transform:
-        translateY(0);
-    }
-
-    50%{
-
-        transform:
-        translateY(-4px);
-    }
-}
-
-/* BUBBLES */
-
-.heart-glass::before,
-.heart-glass::after{
-
-    content:"";
-
-    position:absolute;
-
-    border-radius:50%;
-
-    background:
-
-    rgba(255,255,255,.45);
-}
-
-.heart-glass::before{
-
-    width:8px;
-    height:8px;
-
-    left:46%;
-    bottom:40px;
-
-    animation:
-    bubbleRise 2.5s infinite;
-}
-
-.heart-glass::after{
-
-    width:6px;
-    height:6px;
-
-    left:56%;
-    bottom:25px;
-
-    animation:
-    bubbleRise 3s infinite;
-}
-
-@keyframes bubbleRise{
-
-    from{
-
-        opacity:.4;
-
-        transform:
-        translateY(0);
-    }
-
-    to{
-
-        opacity:0;
-
-        transform:
-        translateY(-80px);
-    }
-}
-
-@keyframes heartFloat{
-
-    0%,100%{
-
-        transform:
-        translateY(0);
-    }
-
-    50%{
-
-        transform:
-        translateY(-8px);
-    }
-}
-
 .loader-content h1{
-
-    margin-top:20px;
 
     font-family:
     "Cormorant Garamond",
     serif;
 
-    font-size:3rem;
+    color:#ffd7eb;
 
-    color:
-    var(--light-pink);
+    margin-top:25px;
 }
 
 .loader-content p{
 
     color:#d8bfd5;
-
-    margin-top:8px;
 }
+.loader-heart{
 
-/* LOADING BAR */
-
-.loader-track{
-
-    width:220px;
-
-    height:5px;
-
-    margin:25px auto 0;
-
-    background:
-
-    rgba(255,255,255,.12);
-
-    border-radius:999px;
-
-    overflow:hidden;
-}
-
-.loader-progress{
-
-    width:0;
-
-    height:100%;
-
-    background:
-
-    linear-gradient(
-        90deg,
-        #ff76be,
-        #ffe0ef
-    );
-
-    border-radius:inherit;
+    font-size:120px;
 
     animation:
-    progressFill 3s ease forwards;
+    heartbeat 1.6s infinite;
+
+    filter:
+
+    drop-shadow(
+        0 0 25px
+        rgba(255,90,150,.6)
+    );
 }
 
-@keyframes progressFill{
+@keyframes heartbeat{
 
-    to{
+    0%,100%{
 
-        width:100%;
+        transform:
+        scale(1);
     }
-}
 
+    25%{
+
+        transform:
+        scale(1.12);
+    }
+
+    50%{
+
+        transform:
+        scale(.95);
+    }
+
+    75%{
+
+        transform:
+        scale(1.15);
+    }
+
+}
 
 /* ======================================
    MUSIC BUTTON
