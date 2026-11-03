@@ -1,71 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="theme-color" content="#170f26">
 
-    <title>Jay & Charity ❤️</title>
+    <title>Jay &amp; Charity ❤️</title>
 
     <link rel="stylesheet" href="style.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-
     <!-- HEART LOADING SCREEN -->
     <div id="loader">
         <div class="loader-content">
-    
             <div class="heart-glass">
-                <svg viewBox="0 0 100 100" class="heart-svg">
+                <svg viewBox="0 0 100 100" class="heart-svg" aria-hidden="true">
                     <defs>
                         <clipPath id="heartClip">
-                            <path d="M50 88
-                                C42 80 8 55 8 32
-                                C8 14 31 5 50 27
-                                C69 5 92 14 92 32
-                                C92 55 58 80 50 88Z"/>
+                            <path d="M50 88 C42 80 8 55 8 32 C8 14 31 5 50 27 C69 5 92 14 92 32 C92 55 58 80 50 88Z"/>
                         </clipPath>
-    
+
                         <linearGradient id="heartLiquid" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#ffb6d9"/>
+                            <stop offset="0%" stop-color="#ffc6e3"/>
                             <stop offset="100%" stop-color="#e84c96"/>
                         </linearGradient>
                     </defs>
-    
-                    <!-- Empty glass heart -->
+
+                    <!-- Heart outline -->
                     <path
                         class="heart-outline"
-                        d="M50 88
-                        C42 80 8 55 8 32
-                        C8 14 31 5 50 27
-                        C69 5 92 14 92 32
-                        C92 55 58 80 50 88Z"
+                        d="M50 88 C42 80 8 55 8 32 C8 14 31 5 50 27 C69 5 92 14 92 32 C92 55 58 80 50 88Z"
                     />
-    
-                    <!-- Filling liquid -->
-                    <g clip-path="url(#heartClip)">
-                        <rect
-                            class="heart-liquid"
-                            x="0"
-                            y="100"
-                            width="100"
-                            height="100"
-                            fill="url(#heartLiquid)"
-                        />
-    
+
+                    <!-- Liquid fills from bottom to top -->
+                    <g class="liquid-fill" clip-path="url(#heartClip)">
+                        <rect x="0" y="0" width="100" height="100" fill="url(#heartLiquid)"/>
                         <path
                             class="liquid-wave"
                             d="M0 0 Q25 -8 50 0 T100 0 V100 H0Z"
                             fill="#ffc6e3"
                         />
                     </g>
-    
+
                     <!-- Glass shine -->
                     <path
                         class="heart-shine"
@@ -73,30 +52,19 @@
                     />
                 </svg>
             </div>
-    
-            <h1>Jay & Charity</h1>
-    
+
+            <h1>Jay &amp; Charity</h1>
             <p>Filling our hearts with memories...</p>
-    
+
             <div class="loader-track">
                 <div class="loader-progress"></div>
             </div>
-    
         </div>
     </div>
 
-
-    <!-- BACKGROUND -->
-    <div class="background-scene">
-        <div class="moon"></div>
-        <div class="moon-glow"></div>
-        <div class="stars" id="stars"></div>
-        <div class="mountains"></div>
-        <div class="castle"></div>
-        <div class="tree tree-left"></div>
-        <div class="tree tree-right"></div>
-        <div class="ground"></div>
-    </div>
+    <!-- BACKGROUND IMAGE
+         Add your image in style.css to the .background-scene rule. -->
+    <div class="background-scene"></div>
 
     <!-- EFFECT LAYERS -->
     <div id="petalLayer"></div>
@@ -114,17 +82,13 @@
 
     <!-- HERO -->
     <section class="hero">
-
         <div class="hero-content">
-
-            <span class="hero-badge">
-                ✨ A Collection of Our Memories ✨
-            </span>
+            <span class="hero-badge">✨ A Collection of Our Memories ✨</span>
 
             <p class="hero-subtitle">A LOVE WRITTEN IN THE STARS</p>
 
             <h1>
-                Jay <span class="ampersand">&</span> Charity
+                Jay <span class="ampersand">&amp;</span> Charity
                 <span class="hero-heart">♥</span>
             </h1>
 
@@ -145,14 +109,11 @@
             </a>
 
             <div class="scroll-hint">SCROLL TO EXPLORE</div>
-
         </div>
-
     </section>
 
     <!-- STATS -->
     <section class="stats-section reveal">
-
         <div class="stat-card">
             <span class="stat-icon">♡</span>
             <h2 id="photoCount">0</h2>
@@ -170,12 +131,10 @@
             <h2 id="memoryCount">0</h2>
             <span>Beautiful Memories</span>
         </div>
-
     </section>
 
     <!-- FEATURED MEMORY -->
     <section class="featured-section reveal">
-
         <div class="section-heading">
             <span class="section-kicker">A MOMENT TO REMEMBER</span>
             <h2>Featured Memory</h2>
@@ -183,7 +142,6 @@
         </div>
 
         <div class="featured-card">
-
             <div class="featured-image-wrap">
                 <div id="featuredMedia"></div>
                 <div class="featured-overlay"></div>
@@ -203,23 +161,17 @@
 
                 <div class="featured-dots" id="featuredDots"></div>
             </div>
-
         </div>
-
     </section>
 
     <!-- OUR STORY -->
     <section id="story" class="section reveal">
-
         <div class="glass-card story-card">
-
             <span class="section-kicker">OUR LOVE STORY</span>
 
             <h2>Every Love Story Is Beautiful</h2>
 
-            <p>
-                But ours is the one we get to write together.
-            </p>
+            <p>But ours is the one we get to write together.</p>
 
             <p>
                 This little corner of the internet is a collection
@@ -234,14 +186,11 @@
             <p class="story-ending">
                 And the best part? We're still writing it. <span>♥</span>
             </p>
-
         </div>
-
     </section>
 
     <!-- TIMELINE -->
     <section class="timeline-section reveal">
-
         <div class="section-heading">
             <span class="section-kicker">CHAPTERS OF US</span>
             <h2>Our Journey Together</h2>
@@ -249,7 +198,6 @@
         </div>
 
         <div class="timeline">
-
             <div class="timeline-item">
                 <div class="timeline-dot">♥</div>
                 <div class="timeline-content">
@@ -285,14 +233,11 @@
                     <p>More memories, more adventures, and more reasons to smile.</p>
                 </div>
             </div>
-
         </div>
-
     </section>
 
     <!-- PHOTO ALBUM -->
     <section class="gallery-section reveal">
-
         <div class="section-heading">
             <span class="section-kicker">A LITTLE PIECE OF FOREVER</span>
             <h2>Our Photo Album</h2>
@@ -305,12 +250,10 @@
         </div>
 
         <div id="photoGallery" class="gallery-grid"></div>
-
     </section>
 
     <!-- VIDEO ALBUM -->
     <section class="gallery-section reveal">
-
         <div class="section-heading">
             <span class="section-kicker">MEMORIES IN MOTION</span>
             <h2>Our Video Album</h2>
@@ -318,14 +261,11 @@
         </div>
 
         <div id="videoGallery" class="gallery-grid video-grid"></div>
-
     </section>
 
     <!-- FUTURE -->
     <section class="section reveal">
-
         <div class="glass-card future-card">
-
             <span class="section-kicker">THE ADVENTURE CONTINUES</span>
 
             <h2>To More Beautiful Memories</h2>
@@ -341,16 +281,12 @@
             </p>
 
             <div class="future-heart">♥</div>
-
         </div>
-
     </section>
 
     <!-- ENDING -->
     <section class="ending-section">
-
         <div class="ending-content">
-
             <span class="section-kicker">OUR JOURNEY CONTINUES</span>
 
             <h2>Our Story<br>Continues Forever</h2>
@@ -363,14 +299,11 @@
             </p>
 
             <a href="#story" class="back-to-top">BACK TO OUR STORY ↑</a>
-
         </div>
-
     </section>
 
     <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox" aria-hidden="true">
-
         <button id="closeLightbox" class="lightbox-close" aria-label="Close album">×</button>
 
         <button id="lightboxPrev" class="lightbox-nav lightbox-prev" aria-label="Previous photograph">‹</button>
@@ -386,13 +319,11 @@
         </div>
 
         <button id="lightboxNext" class="lightbox-nav lightbox-next" aria-label="Next photograph">›</button>
-
     </div>
 
     <!-- FLOATING QUOTE -->
     <div id="quoteBanner" class="quote-banner"></div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
