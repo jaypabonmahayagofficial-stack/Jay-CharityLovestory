@@ -1008,23 +1008,33 @@ createPetal,
 /* ==========================================
    REALISTIC FIREFLIES
 ========================================== */
-
 const fireflyLayer =
-document.getElementById("fireflyLayer");
+document.getElementById(
+"fireflyLayer"
+);
 
-console.log("Firefly Layer:", fireflyLayer);
+for(let i=0;i<20;i++){
 
-const test = document.createElement("div");
+    const firefly =
+    document.createElement(
+    "div"
+    );
 
-test.style.width = "50px";
-test.style.height = "50px";
-test.style.background = "yellow";
-test.style.position = "absolute";
-test.style.left = "100px";
-test.style.top = "100px";
-test.style.zIndex = "9999";
+    firefly.className =
+    "firefly";
 
-fireflyLayer.appendChild(test);
+    firefly.style.left =
+    (Math.random()*100)
+    +"vw";
+
+    firefly.style.top =
+    (Math.random()*100)
+    +"vh";
+
+    fireflyLayer.appendChild(
+    firefly
+    );
+}
 
 /* ==========================================
    FLOATING HEARTS
