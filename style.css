@@ -181,7 +181,7 @@ button{
         translate(0,-180px);
     }
 }
-}#heartLayer{
+.heartLayer{
 
     position:fixed;
 
