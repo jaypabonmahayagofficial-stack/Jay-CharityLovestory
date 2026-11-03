@@ -627,14 +627,17 @@ card.innerHTML = `
 <div class="memory-image-wrap">
 
 <video
+controls
 muted
-autoplay
-loop
-playsinline>
+playsinline
+webkit-playsinline
+preload="metadata">
 
 <source
 src="${memory.file}"
 type="video/mp4">
+
+Your browser does not support video.
 
 </video>
 
