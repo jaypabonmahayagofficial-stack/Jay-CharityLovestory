@@ -80,38 +80,167 @@ ADD YOUR PHOTOS / VIDEOS HERE
 const memories = [
 
 {
-    type:"image",
-    file:"photos/Photo1.jpeg",
-    title:"The Beginning",
-    text:"Where our story began."
+    type: "image",
+    file: "photos/Photo1.jpeg",
+    title: "Memory 01",
+    text: "A special moment from our journey."
 },
 
 {
-    type:"image",
-    file:"photos/photo2.jpg",
-    title:"Favorite Day",
-    text:"A day worth remembering forever."
+    type: "image",
+    file: "photos/Photo2.jpeg",
+    title: "Memory 02",
+    text: "A beautiful chapter in our story."
 },
 
 {
-    type:"image",
-    file:"photos/photo3.jpg",
-    title:"Adventure Together",
-    text:"Exploring life side by side."
+    type: "image",
+    file: "photos/Photo3.png",
+    title: "Memory 03",
+    text: "A treasured memory together."
 },
 
 {
-    type:"video",
-    file:"videos/video1.mp4",
-    title:"Road Trip",
-    text:"Captured forever in motion."
+    type: "image",
+    file: "photos/Photo4.jpeg",
+    title: "Memory 04",
+    text: "A moment worth remembering."
 },
 
 {
-    type:"video",
-    file:"videos/video2.mp4",
-    title:"Special Moment",
-    text:"A memory we'll always treasure."
+    type: "image",
+    file: "photos/Photo5.jpeg",
+    title: "Memory 05",
+    text: "One of our favorite days."
+},
+
+{
+    type: "image",
+    file: "photos/photo6.jpeg",
+    title: "Memory 06",
+    text: "Captured forever."
+},
+
+{
+    type: "image",
+    file: "photos/photo7.jpeg",
+    title: "Memory 07",
+    text: "Another unforgettable chapter."
+},
+
+{
+    type: "image",
+    file: "photos/Photo8.jpeg",
+    title: "Memory 08",
+    text: "A day we'll always cherish."
+},
+
+{
+    type: "image",
+    file: "photos/Photo9.jpeg",
+    title: "Memory 09",
+    text: "A memory filled with happiness."
+},
+
+{
+    type: "image",
+    file: "photos/photo10.jpeg",
+    title: "Memory 10",
+    text: "Together through every adventure."
+},
+
+{
+    type: "image",
+    file: "photos/Photo11.jpeg",
+    title: "Memory 11",
+    text: "One of our favorite snapshots."
+},
+
+{
+    type: "image",
+    file: "photos/Photo12.jpeg",
+    title: "Memory 12",
+    text: "A beautiful moment frozen in time."
+},
+
+
+/* VIDEOS */
+
+{
+    type: "video",
+    file: "videos/vid1.mp4",
+    title: "Video Memory 01",
+    text: "One of our moving memories."
+},
+
+{
+    type: "video",
+    file: "videos/vid2.mp4",
+    title: "Video Memory 02",
+    text: "A moment we'll enjoy watching again."
+},
+
+{
+    type: "video",
+    file: "videos/vid3.mp4",
+    title: "Video Memory 03",
+    text: "Captured forever on video."
+},
+
+{
+    type: "video",
+    file: "videos/vid4.mp4",
+    title: "Video Memory 04",
+    text: "Another unforgettable memory."
+},
+
+{
+    type: "video",
+    file: "videos/vid5.mp4",
+    title: "Video Memory 05",
+    text: "A favorite adventure together."
+},
+
+{
+    type: "video",
+    file: "videos/vid6.mp4",
+    title: "Video Memory 06",
+    text: "A story worth replaying."
+},
+
+{
+    type: "video",
+    file: "videos/vid7.mp4",
+    title: "Video Memory 07",
+    text: "Another chapter in our journey."
+},
+
+{
+    type: "video",
+    file: "videos/vid8.mp4",
+    title: "Video Memory 08",
+    text: "Memories in motion."
+},
+
+{
+    type: "video",
+    file: "videos/vid9.mp4",
+    title: "Video Memory 09",
+    text: "A moment captured beautifully."
+},
+
+{
+    type: "video",
+    file: "videos/vid10.mp4",
+    title: "Video Memory 10",
+    text: "One of our happiest days."
+},
+
+{
+    type: "video",
+    file: "videos/vid11.mp4",
+    title: "Video Memory 11",
+    text: "A memory we'll never forget."
 }
 
 ];
