@@ -1473,3 +1473,390 @@ button{
 
     line-height:1.8;
 }
+/* ======================================
+   PHOTO ALBUM
+====================================== */
+
+.gallery-toolbar{
+
+    max-width:1200px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:#cbbeda;
+
+    font-size:.8rem;
+}
+
+.gallery-grid{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(
+        auto-fit,
+        minmax(320px,1fr)
+    );
+
+    gap:25px;
+}
+
+
+/* ======================================
+   MEMORY CARD
+====================================== */
+
+.memory-card{
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid var(--border);
+
+    backdrop-filter:
+    blur(15px);
+
+    transition:
+    .4s ease;
+
+    cursor:pointer;
+}
+
+.memory-card:hover{
+
+    transform:
+    translateY(-8px);
+
+    border-color:
+    rgba(245,168,207,.4);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.2);
+}
+
+
+/* IMAGE CONTAINER */
+
+.memory-image-wrap{
+
+    position:relative;
+
+    width:100%;
+
+    height:320px;
+
+    overflow:hidden;
+
+    background:
+    #1b1326;
+}
+
+.memory-image-wrap::after{
+
+    content:"VIEW MEMORY ↗";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    rgba(0,0,0,.35);
+
+    opacity:0;
+
+    color:white;
+
+    font-size:.75rem;
+
+    letter-spacing:3px;
+
+    transition:.35s ease;
+}
+
+.memory-card:hover
+.memory-image-wrap::after{
+
+    opacity:1;
+}
+
+
+/* IMAGES */
+
+.memory-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+    transform .8s ease;
+}
+
+.memory-card:hover img{
+
+    transform:
+    scale(1.08);
+}
+
+
+/* VIDEOS */
+
+.memory-card video{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+
+/* CONTENT */
+
+.memory-content{
+
+    padding:22px;
+}
+
+.memory-tag{
+
+    display:inline-block;
+
+    margin-bottom:10px;
+
+    color:var(--gold);
+
+    letter-spacing:2px;
+
+    font-size:.65rem;
+
+    text-transform:uppercase;
+}
+
+.memory-content h3{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+    font-size:1.8rem;
+
+    margin-bottom:8px;
+}
+
+.memory-content p{
+
+    color:#d4cadf;
+
+    font-size:.9rem;
+
+    line-height:1.8;
+}
+
+
+/* ======================================
+   VIDEO GRID
+====================================== */
+
+.video-grid .memory-card{
+
+    cursor:default;
+}
+
+.video-grid
+.memory-image-wrap::after{
+
+    display:none;
+}
+
+
+/* ======================================
+   FUTURE CARD
+====================================== */
+
+.future-card{
+
+    max-width:900px;
+}
+
+.future-card h2{
+
+    margin-bottom:25px;
+}
+
+.future-heart{
+
+    font-size:2rem;
+
+    color:var(--pink);
+
+    margin-top:25px;
+
+    animation:
+    pulseFuture 2s infinite;
+}
+
+@keyframes pulseFuture{
+
+    50%{
+
+        transform:
+        scale(1.25);
+    }
+}
+
+
+/* ======================================
+   ENDING SECTION
+====================================== */
+
+.ending-section{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:100px 20px;
+}
+
+.ending-content{
+
+    max-width:900px;
+}
+
+.ending-content h2{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+    font-weight:500;
+
+    line-height:1;
+
+    font-size:
+    clamp(
+        3rem,
+        7vw,
+        6rem
+    );
+
+    margin:20px 0;
+
+    color:var(--light-pink);
+}
+
+.ending-divider{
+
+    color:var(--gold);
+
+    margin:20px 0;
+
+    font-size:1.2rem;
+}
+
+.ending-content p{
+
+    color:#d8cfe1;
+
+    line-height:2;
+}
+
+
+/* ======================================
+   BACK TO TOP
+====================================== */
+
+.back-to-top{
+
+    display:inline-block;
+
+    margin-top:35px;
+
+    padding:13px 24px;
+
+    border-radius:50px;
+
+    border:
+    1px solid var(--border);
+
+    backdrop-filter:
+    blur(15px);
+
+    background:
+    rgba(255,255,255,.06);
+
+    transition:.3s;
+}
+
+.back-to-top:hover{
+
+    transform:
+    translateY(-3px);
+
+    background:
+    rgba(245,168,207,.12);
+}
+
+
+/* ======================================
+   FEATURED ANIMATION
+====================================== */
+
+#featuredMedia img,
+#featuredMedia video{
+
+    animation:
+    fadeMemory 1s ease;
+}
+
+@keyframes fadeMemory{
+
+    from{
+
+        opacity:.4;
+
+        transform:
+        scale(1.03);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        scale(1);
+    }
+}
