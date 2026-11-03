@@ -261,7 +261,14 @@ button{
 /* ======================================
    HEART LOADER
 ====================================== */
-.loader-heart-container{
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:999999;
 
     display:flex;
 
@@ -269,88 +276,89 @@ button{
 
     align-items:center;
 
-    margin-bottom:30px;
+    background:
+
+    radial-gradient(
+        circle,
+        #2d1737,
+        #170f26 70%,
+        #0e0a18
+    );
+
+    transition:
+    opacity 1s ease,
+    visibility 1s ease;
 }
 
-.loader-heart-shape{
+#loader.hide{
 
-    position:relative;
+    opacity:0;
 
-    width:120px;
-    height:120px;
+    visibility:hidden;
+}
 
-    background:#ff4f8b;
+.loader-content{
 
-    transform:
-    rotate(-45deg);
+    text-align:center;
+}
+
+.loader-gif{
+
+    width:220px;
+
+    margin-bottom:20px;
+
+    filter:
+
+    drop-shadow(
+        0 0 20px
+        rgba(255,100,170,.5)
+    )
+
+    drop-shadow(
+        0 0 60px
+        rgba(255,100,170,.25)
+    );
 
     animation:
-    heartbeat 1.3s infinite;
-
-    box-shadow:
-
-    0 0 25px rgba(255,79,139,.8),
-
-    0 0 80px rgba(255,79,139,.4);
+    floatHeart 3s ease-in-out infinite;
 }
 
-.loader-heart-shape::before,
-.loader-heart-shape::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:120px;
-    height:120px;
-
-    background:#ff4f8b;
-
-    border-radius:50%;
-}
-
-.loader-heart-shape::before{
-
-    top:-60px;
-    left:0;
-}
-
-.loader-heart-shape::after{
-
-    left:60px;
-    top:0;
-}
-
-@keyframes heartbeat{
+@keyframes floatHeart{
 
     0%,100%{
 
         transform:
-        rotate(-45deg)
-        scale(1);
-    }
-
-    25%{
-
-        transform:
-        rotate(-45deg)
-        scale(1.08);
+        translateY(0);
     }
 
     50%{
 
         transform:
-        rotate(-45deg)
-        scale(.95);
-    }
-
-    75%{
-
-        transform:
-        rotate(-45deg)
-        scale(1.12);
+        translateY(-10px);
     }
 }
+
+.loader-content h1{
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+    font-size:3rem;
+
+    color:#ffd7eb;
+}
+
+.loader-content p{
+
+    color:#d8bfd5;
+
+    margin-top:8px;
+
+    font-size:.95rem;
+}
+
 /* ======================================
    MUSIC BUTTON
 ====================================== */
