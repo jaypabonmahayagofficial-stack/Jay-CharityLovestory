@@ -1010,36 +1010,21 @@ createPetal,
 ========================================== */
 
 const fireflyLayer =
-document.getElementById(
-"fireflyLayer"
-);
+document.getElementById("fireflyLayer");
 
-for(let i = 0; i < 80; i++){
+console.log("Firefly Layer:", fireflyLayer);
 
-    const firefly =
-    document.createElement("div");
+const test = document.createElement("div");
 
-    firefly.className =
-    "firefly";
+test.style.width = "50px";
+test.style.height = "50px";
+test.style.background = "yellow";
+test.style.position = "absolute";
+test.style.left = "100px";
+test.style.top = "100px";
+test.style.zIndex = "9999";
 
-    firefly.style.left =
-    Math.random() * 100 + "vw";
-
-    firefly.style.top =
-    Math.random() * 100 + "vh";
-
-    firefly.style.animationDuration =
-    (4 + Math.random() * 6) + "s, " +
-    (10 + Math.random() * 10) + "s";
-
-    firefly.style.animationDelay =
-    Math.random() * 5 + "s";
-
-    fireflyLayer.appendChild(
-        firefly
-    );
-
-}
+fireflyLayer.appendChild(test);
 
 /* ==========================================
    FLOATING HEARTS
