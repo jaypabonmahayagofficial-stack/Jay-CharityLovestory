@@ -1313,22 +1313,13 @@ body.loading{
 
     font-size:.8rem;
 }
-
 .gallery-grid{
-
     max-width:1200px;
-
     margin:auto;
-
     display:grid;
-
-    grid-template-columns:
-    repeat(
-        auto-fit,
-        minmax(280px,1fr)
-    );
-
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
     gap:20px;
+    width:100%;
 }
 
 
@@ -1944,6 +1935,14 @@ body.loading{
     .video-grid .memory-image-wrap{
         aspect-ratio:16/9;
     }
+    
+    .memory-card{
+        width:100%;
+    }
+    
+    .gallery-section{
+        overflow-x:hidden;
+    }
 }
 
 #sparkleLayer{
@@ -1998,13 +1997,37 @@ body.loading{
     
     .section,
     .featured-section,
-    .gallery-section,
-    .timeline-section{
-        padding:80px 5%;
-    }
+.gallery-section,
+.timeline-section{
+    padding:110px 7%;
+    overflow-x:hidden;
+}
     
     .gallery-grid{
         grid-template-columns:1fr;
+        width:100%;
+    }
+    
+    .memory-card{
+        width:100%;
+        max-width:100%;
+    }
+    
+    .memory-image-wrap{
+        aspect-ratio:4/3;
+        width:100%;
+    }
+    
+    .video-grid .memory-image-wrap{
+        aspect-ratio:16/9;
+        width:100%;
+    }
+    
+    .memory-card img,
+    .memory-card video{
+        width:100%;
+        height:100%;
+        object-fit:cover;
     }
     
     .featured-image-wrap{
