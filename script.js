@@ -250,8 +250,21 @@ type:"video",
 file:"videos/vid11.mp4",
 title:"Video 11",
 text:"A story still being written."
-}
+},
 
+{
+type:"video",
+file:"videos/vid12.mp4",
+title:"Video 11",
+text:"A story still being written."
+},
+
+{
+type:"video",
+file:"videos/vid13.mp4",
+title:"Video 11",
+text:"A story still being written."
+}
 ];
 
 /* ==========================================
