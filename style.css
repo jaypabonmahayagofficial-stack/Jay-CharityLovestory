@@ -92,11 +92,19 @@ button{
 
     background-attachment:fixed;
 }
+/* ======================================
+   REALISTIC FIREFLIES
+====================================== */
+
 #fireflyLayer{
 
     position:fixed;
 
-    inset:0;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
 
     overflow:hidden;
 
@@ -109,31 +117,61 @@ button{
 
     position:absolute;
 
-    width:3px;
-    height:3px;
+    width:6px;
+    height:6px;
 
     border-radius:50%;
 
-    background:#fff6b0;
+    background:#fff8b0;
 
     box-shadow:
 
-        0 0 4px #fff6b0,
-        0 0 8px #ffe680,
-        0 0 18px #fff3a0,
-        0 0 35px #fff1a0;
+        0 0 8px #fff8b0,
 
-    opacity:.8;
+        0 0 15px #ffe680,
+
+        0 0 30px #fff4aa,
+
+        0 0 60px rgba(255,240,170,.6);
+
+    opacity:.6;
 
     animation:
 
-        fireflyFloat var(--speed) linear infinite,
+        fireflyBlink ease-in-out infinite,
 
-        fireflyBlink calc(var(--speed)/2)
-        ease-in-out infinite alternate;
+        fireflyMove linear infinite;
 }
 
-@keyframes fireflyFloat{
+/* GLOWING */
+
+@keyframes fireflyBlink{
+
+    0%{
+
+        opacity:.15;
+
+        filter:brightness(.8);
+    }
+
+    50%{
+
+        opacity:1;
+
+        filter:brightness(1.8);
+    }
+
+    100%{
+
+        opacity:.2;
+
+        filter:brightness(.8);
+    }
+}
+
+/* DRIFTING */
+
+@keyframes fireflyMove{
 
     0%{
 
@@ -141,53 +179,28 @@ button{
         translate(0,0);
     }
 
-    20%{
+    25%{
 
         transform:
-        translate(20px,-30px);
+        translate(30px,-40px);
     }
 
-    40%{
+    50%{
 
         transform:
-        translate(-15px,-80px);
+        translate(-25px,-90px);
     }
 
-    60%{
+    75%{
 
         transform:
-        translate(30px,-120px);
-    }
-
-    80%{
-
-        transform:
-        translate(-20px,-170px);
+        translate(40px,-130px);
     }
 
     100%{
 
         transform:
-        translate(10px,-220px);
-    }
-}
-
-@keyframes fireflyBlink{
-
-    from{
-
-        opacity:.1;
-
-        filter:
-        brightness(.7);
-    }
-
-    to{
-
-        opacity:1;
-
-        filter:
-        brightness(1.8);
+        translate(0,-180px);
     }
 }
 }#heartLayer{
