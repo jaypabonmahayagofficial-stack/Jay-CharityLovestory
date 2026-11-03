@@ -1114,7 +1114,25 @@ setInterval(
 createHeart,
 4000
 );
+@media (max-width:500px){
 
+    .video-grid .memory-image-wrap{
+
+        height:220px;
+    }
+
+    .video-grid video{
+
+        width:100%;
+
+        height:100%;
+
+        object-fit:contain;
+
+        background:#000;
+    }
+
+}
 
 /* ==========================================
    HERO PARALLAX
