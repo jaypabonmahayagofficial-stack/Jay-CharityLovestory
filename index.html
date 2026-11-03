@@ -1,329 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#170f26">
 
-    <title>Jay &amp; Charity ❤️</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta
+        name="theme-color"
+        content="#170f26">
+
+    <title>
+        Jay & Charity ❤️
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
 
-    <!-- HEART LOADING SCREEN -->
-    <div id="loader">
-        <div class="loader-content">
-            <div class="heart-glass">
-                <svg viewBox="0 0 100 100" class="heart-svg" aria-hidden="true">
-                    <defs>
-                        <clipPath id="heartClip">
-                            <path d="M50 88 C42 80 8 55 8 32 C8 14 31 5 50 27 C69 5 92 14 92 32 C92 55 58 80 50 88Z"/>
-                        </clipPath>
+<!-- ======================================
+     GLASS HEART LOADER
+====================================== -->
 
-                        <linearGradient id="heartLiquid" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#ffc6e3"/>
-                            <stop offset="100%" stop-color="#e84c96"/>
-                        </linearGradient>
-                    </defs>
+<div id="loader">
 
-                    <!-- Heart outline -->
-                    <path
-                        class="heart-outline"
-                        d="M50 88 C42 80 8 55 8 32 C8 14 31 5 50 27 C69 5 92 14 92 32 C92 55 58 80 50 88Z"
-                    />
+    <div class="loader-content">
 
-                    <!-- Liquid fills from bottom to top -->
-                    <g class="liquid-fill" clip-path="url(#heartClip)">
-                        <rect x="0" y="0" width="100" height="100" fill="url(#heartLiquid)"/>
+        <div class="heart-glass">
+
+            <svg
+                viewBox="0 0 100 100"
+                class="heart-svg"
+                aria-hidden="true">
+
+                <defs>
+
+                    <clipPath id="heartClip">
+
                         <path
-                            class="liquid-wave"
-                            d="M0 0 Q25 -8 50 0 T100 0 V100 H0Z"
-                            fill="#ffc6e3"
-                        />
-                    </g>
+                            d="
+                            M50 88
+                            C42 80 8 55 8 32
+                            C8 14 31 5 50 27
+                            C69 5 92 14 92 32
+                            C92 55 58 80 50 88Z
+                            " />
 
-                    <!-- Glass shine -->
+                    </clipPath>
+
+                    <linearGradient
+                        id="heartLiquid"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1">
+
+                        <stop
+                            offset="0%"
+                            stop-color="#ffd0ea" />
+
+                        <stop
+                            offset="100%"
+                            stop-color="#e84c96" />
+
+                    </linearGradient>
+
+                </defs>
+
+                <path
+                    class="heart-outline"
+                    d="
+                    M50 88
+                    C42 80 8 55 8 32
+                    C8 14 31 5 50 27
+                    C69 5 92 14 92 32
+                    C92 55 58 80 50 88Z
+                    " />
+
+                <g
+                    class="liquid-fill"
+                    clip-path="url(#heartClip)">
+
+                    <rect
+                        x="0"
+                        y="0"
+                        width="100"
+                        height="100"
+                        fill="url(#heartLiquid)" />
+
                     <path
-                        class="heart-shine"
-                        d="M22 30 C22 20 33 17 40 24"
-                    />
-                </svg>
-            </div>
+                        class="liquid-wave"
+                        d="M0 35 Q25 28 50 35 T100 35 V100 H0Z"
+                        fill="#ffe4f3" />
 
-            <h1>Jay &amp; Charity</h1>
-            <p>Filling our hearts with memories...</p>
+                </g>
 
-            <div class="loader-track">
-                <div class="loader-progress"></div>
-            </div>
+                <path
+                    class="heart-shine"
+                    d="M24 28 C25 18 35 16 41 24" />
+
+            </svg>
+
         </div>
+
+        <h1>
+            Jay & Charity ❤️
+        </h1>
+
+        <p>
+            Filling our hearts with memories...
+        </p>
+
+        <div class="loader-track">
+
+            <div class="loader-progress"></div>
+
+        </div>
+
     </div>
 
-    <!-- BACKGROUND IMAGE
-         Add your image in style.css to the .background-scene rule. -->
-    <div class="background-scene"></div>
+</div>
 
-    <!-- EFFECT LAYERS -->
-    <div id="petalLayer"></div>
-    <div id="fireflyLayer"></div>
-    <div id="heartLayer"></div>
+<!-- ======================================
+     BACKGROUND
+====================================== -->
 
-    <!-- MUSIC -->
-    <audio id="bgMusic" loop>
-        <source src="music/oursong.mp3" type="audio/mpeg">
-    </audio>
+<div class="background-scene">
 
-    <button id="musicBtn" class="music-btn">
-        <span>♫</span> Play Music
+    <div class="moon"></div>
+
+    <div class="moon-glow"></div>
+
+    <div class="stars"></div>
+
+    <div class="mountains"></div>
+
+    <div class="ground"></div>
+
+    <div class="tree tree-left"></div>
+
+    <div class="tree tree-right"></div>
+
+</div>
+
+<!-- ======================================
+     EFFECT LAYERS
+====================================== -->
+
+<div id="petalLayer"></div>
+
+<div id="fireflyLayer"></div>
+
+<div id="heartLayer"></div>
+
+<!-- ======================================
+     MUSIC
+====================================== -->
+
+<audio
+    id="bgMusic"
+    loop>
+
+    <source
+        src="music/oursong.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+<button
+    id="musicBtn"
+    class="music-btn">
+
+    <span>♫</span>
+
+    Play Music
+
+</button>
+
+<!-- ======================================
+     HERO
+====================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+
+            ✨ Our Memory Book ✨
+
+        </span>
+
+        <p class="hero-subtitle">
+
+            A LOVE WRITTEN IN THE STARS
+
+        </p>
+
+        <h1>
+
+            Jay
+
+            <span class="ampersand">
+                &
+            </span>
+
+            Charity
+
+            <span class="hero-heart">
+                ♥
+            </span>
+
+        </h1>
+
+        <div class="hero-divider">
+
+            <span></span>
+
+            ✦
+
+            <span></span>
+
+        </div>
+
+        <h2>
+
+            Our Story, Our Memories, Our Forever
+
+        </h2>
+
+        <p class="hero-description">
+
+            Every photograph tells a story.
+            Every video captures a moment.
+            Every memory becomes a treasure.
+
+        </p>
+
+        <a
+            href="#story"
+            class="hero-btn">
+
+            Begin Our Journey
+
+            <span>↓</span>
+
+        </a>
+
+        <div class="scroll-hint">
+
+            SCROLL TO EXPLORE
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     STATS
+====================================== -->
+
+<section class="stats-section reveal">
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            ♡
+        </span>
+
+        <h2 id="photoCount">
+            0
+        </h2>
+
+        <span>
+            Photos
+        </span>
+
+    </div>
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            ✧
+        </span>
+
+        <h2 id="videoCount">
+            0
+        </h2>
+
+        <span>
+            Videos
+        </span>
+
+    </div>
+
+    <div class="stat-card">
+
+        <span class="stat-icon">
+            ♥
+        </span>
+
+        <h2 id="memoryCount">
+            0
+        </h2>
+
+        <span>
+            Memories
+        </span>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     FEATURED MEMORY
+====================================== -->
+
+<section class="featured-section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-kicker">
+
+            FEATURED MEMORY
+
+        </span>
+
+        <h2>
+            One Special Moment
+        </h2>
+
+        <p>
+
+            Some memories deserve a place
+            at the center of the story.
+
+        </p>
+
+    </div>
+
+    <div class="featured-card">
+
+        <div class="featured-image-wrap">
+
+            <div id="featuredMedia"></div>
+
+            <div class="featured-overlay"></div>
+
+            <span class="featured-label">
+
+                OUR MEMORY BOOK
+
+            </span>
+
+            <button
+                id="featuredPrev"
+                class="featured-nav prev">
+
+                ‹
+
+            </button>
+
+            <button
+                id="featuredNext"
+                class="featured-nav next">
+
+                ›
+
+            </button>
+
+        </div>
+
+        <div class="featured-content">
+
+            <div>
+
+                <span
+                    class="memory-number"
+                    id="featuredNumber">
+
+                    MEMORY 01
+
+                </span>
+
+                <h3 id="featuredTitle">
+
+                    The Beginning
+
+                </h3>
+
+                <p id="featuredText">
+
+                    One unforgettable memory.
+
+                </p>
+
+            </div>
+
+            <div
+                id="featuredDots"
+                class="featured-dots">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     STORY
+====================================== -->
+
+<section
+    id="story"
+    class="section reveal">
+
+    <div class="glass-card story-card">
+
+        <span class="section-kicker">
+
+            OUR STORY
+
+        </span>
+
+        <h2>
+
+            Every Memory Matters
+
+        </h2>
+
+        <p>
+
+            This website is a collection
+            of moments we've shared together.
+
+        </p>
+
+        <p>
+
+            Through adventures,
+            celebrations,
+            travel,
+            laughter,
+            and simple everyday moments.
+
+        </p>
+
+        <p>
+
+            Every chapter becomes
+            a beautiful part of our story.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     TIMELINE
+====================================== -->
+
+<section class="timeline-section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-kicker">
+
+            OUR JOURNEY
+
+        </span>
+
+        <h2>
+
+            Chapters Of Us
+
+        </h2>
+
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot">♥</div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-date">
+
+                    CHAPTER 01
+
+                </span>
+
+                <h3>
+
+                    The Beginning
+
+                </h3>
+
+                <p>
+
+                    Where everything started.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot">♥</div>
+
+            <div class="timeline-content">
+
+                <span class="timeline-date">
+
+                    CHAPTER 02
+
+                </span>
+
+                <h3>
+
+                    Adventures Together
+
+                </h3>
+
+                <p>
+
+                    Traveling, exploring,
+                    and making memories.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     PHOTO ALBUM
+====================================== -->
+
+<section class="gallery-section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-kicker">
+
+            PHOTO ALBUM
+
+        </span>
+
+        <h2>
+
+            Our Favorite Pictures
+
+        </h2>
+
+    </div>
+
+    <div class="gallery-toolbar">
+
+        <span id="galleryCount">
+
+            0 Memories
+
+        </span>
+
+        <span>
+
+            Click any photo to view album
+
+        </span>
+
+    </div>
+
+    <div
+        id="photoGallery"
+        class="gallery-grid">
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     VIDEO ALBUM
+====================================== -->
+
+<section class="gallery-section reveal">
+
+    <div class="section-heading">
+
+        <span class="section-kicker">
+
+            VIDEO MEMORIES
+
+        </span>
+
+        <h2>
+
+            Moments In Motion
+
+        </h2>
+
+    </div>
+
+    <div
+        id="videoGallery"
+        class="gallery-grid video-grid">
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     FUTURE
+====================================== -->
+
+<section class="section reveal">
+
+    <div class="glass-card future-card">
+
+        <span class="section-kicker">
+
+            THE ADVENTURE CONTINUES
+
+        </span>
+
+        <h2>
+
+            More Memories Ahead
+
+        </h2>
+
+        <p>
+
+            More adventures,
+            more photographs,
+            and more unforgettable days.
+
+        </p>
+
+        <div class="future-heart">
+
+            ♥
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     ENDING
+====================================== -->
+
+<section class="ending-section">
+
+    <div class="ending-content">
+
+        <span class="section-kicker">
+
+            OUR STORY CONTINUES
+
+        </span>
+
+        <h2>
+
+            Forever Creating Memories
+
+        </h2>
+
+        <div class="ending-divider">
+
+            ✦ ♥ ✦
+
+        </div>
+
+        <p>
+
+            Every ending is simply
+            the beginning of another chapter.
+
+        </p>
+
+        <a
+            href="#story"
+            class="back-to-top">
+
+            BACK TO TOP ↑
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ======================================
+     LIGHTBOX
+====================================== -->
+
+<div
+    id="lightbox"
+    class="lightbox"
+    aria-hidden="true">
+
+    <button
+        id="closeLightbox"
+        class="lightbox-close">
+
+        ×
+
     </button>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">✨ A Collection of Our Memories ✨</span>
+    <button
+        id="lightboxPrev"
+        class="lightbox-nav lightbox-prev">
 
-            <p class="hero-subtitle">A LOVE WRITTEN IN THE STARS</p>
+        ‹
 
-            <h1>
-                Jay <span class="ampersand">&amp;</span> Charity
-                <span class="hero-heart">♥</span>
-            </h1>
+    </button>
 
-            <div class="hero-divider">
-                <span></span> ✦ <span></span>
-            </div>
+    <div class="lightbox-content">
 
-            <h2>Our Story, Our Memories, Our Forever</h2>
+        <img
+            id="lightboxImg"
+            alt="Memory">
 
-            <p class="hero-description">
-                Every photograph holds a moment.
-                Every moment tells a story.
-                And every story brings us back to each other.
-            </p>
+        <div class="lightbox-caption">
 
-            <a href="#story" class="hero-btn">
-                Begin Our Journey <span>↓</span>
-            </a>
+            <h3 id="lightboxTitle"></h3>
 
-            <div class="scroll-hint">SCROLL TO EXPLORE</div>
-        </div>
-    </section>
+            <p id="lightboxText"></p>
 
-    <!-- STATS -->
-    <section class="stats-section reveal">
-        <div class="stat-card">
-            <span class="stat-icon">♡</span>
-            <h2 id="photoCount">0</h2>
-            <span>Photographs</span>
+            <span id="lightboxCounter"></span>
+
         </div>
 
-        <div class="stat-card">
-            <span class="stat-icon">✧</span>
-            <h2 id="videoCount">0</h2>
-            <span>Videos</span>
-        </div>
-
-        <div class="stat-card">
-            <span class="stat-icon">♥</span>
-            <h2 id="memoryCount">0</h2>
-            <span>Beautiful Memories</span>
-        </div>
-    </section>
-
-    <!-- FEATURED MEMORY -->
-    <section class="featured-section reveal">
-        <div class="section-heading">
-            <span class="section-kicker">A MOMENT TO REMEMBER</span>
-            <h2>Featured Memory</h2>
-            <p>Some moments deserve to be remembered forever.</p>
-        </div>
-
-        <div class="featured-card">
-            <div class="featured-image-wrap">
-                <div id="featuredMedia"></div>
-                <div class="featured-overlay"></div>
-
-                <span class="featured-label">OUR MEMORY BOOK</span>
-
-                <button id="featuredPrev" class="featured-nav prev" aria-label="Previous memory">‹</button>
-                <button id="featuredNext" class="featured-nav next" aria-label="Next memory">›</button>
-            </div>
-
-            <div class="featured-content">
-                <div>
-                    <span class="memory-number" id="featuredNumber">MEMORY 01</span>
-                    <h3 id="featuredTitle">The Beginning</h3>
-                    <p id="featuredText">Where one unforgettable chapter started.</p>
-                </div>
-
-                <div class="featured-dots" id="featuredDots"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- OUR STORY -->
-    <section id="story" class="section reveal">
-        <div class="glass-card story-card">
-            <span class="section-kicker">OUR LOVE STORY</span>
-
-            <h2>Every Love Story Is Beautiful</h2>
-
-            <p>But ours is the one we get to write together.</p>
-
-            <p>
-                This little corner of the internet is a collection
-                of our favorite photographs, adventures, and memories.
-            </p>
-
-            <p>
-                From the simplest moments to the unforgettable days,
-                every chapter has become a part of our story.
-            </p>
-
-            <p class="story-ending">
-                And the best part? We're still writing it. <span>♥</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section class="timeline-section reveal">
-        <div class="section-heading">
-            <span class="section-kicker">CHAPTERS OF US</span>
-            <h2>Our Journey Together</h2>
-            <p>A few beautiful chapters in our story.</p>
-        </div>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot">♥</div>
-                <div class="timeline-content">
-                    <span class="timeline-date">CHAPTER ONE</span>
-                    <h3>The Beginning</h3>
-                    <p>Where two hearts found their way to each other.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot">♥</div>
-                <div class="timeline-content">
-                    <span class="timeline-date">CHAPTER TWO</span>
-                    <h3>Adventures Together</h3>
-                    <p>Discovering new places and making memories along the way.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot">♥</div>
-                <div class="timeline-content">
-                    <span class="timeline-date">CHAPTER THREE</span>
-                    <h3>Our Favorite Moments</h3>
-                    <p>The little things that became our greatest treasures.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot">♥</div>
-                <div class="timeline-content">
-                    <span class="timeline-date">THE NEXT CHAPTER</span>
-                    <h3>Our Story Continues</h3>
-                    <p>More memories, more adventures, and more reasons to smile.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PHOTO ALBUM -->
-    <section class="gallery-section reveal">
-        <div class="section-heading">
-            <span class="section-kicker">A LITTLE PIECE OF FOREVER</span>
-            <h2>Our Photo Album</h2>
-            <p>Every picture holds a piece of our story.</p>
-        </div>
-
-        <div class="gallery-toolbar">
-            <span id="galleryCount">0 memories</span>
-            <span>Click a photograph to open the album ✦</span>
-        </div>
-
-        <div id="photoGallery" class="gallery-grid"></div>
-    </section>
-
-    <!-- VIDEO ALBUM -->
-    <section class="gallery-section reveal">
-        <div class="section-heading">
-            <span class="section-kicker">MEMORIES IN MOTION</span>
-            <h2>Our Video Album</h2>
-            <p>Moments we can watch again and again.</p>
-        </div>
-
-        <div id="videoGallery" class="gallery-grid video-grid"></div>
-    </section>
-
-    <!-- FUTURE -->
-    <section class="section reveal">
-        <div class="glass-card future-card">
-            <span class="section-kicker">THE ADVENTURE CONTINUES</span>
-
-            <h2>To More Beautiful Memories</h2>
-
-            <p>
-                More adventures. More photographs.
-                More laughter and unforgettable moments.
-            </p>
-
-            <p>
-                And through it all, more reasons to be grateful
-                that our paths crossed.
-            </p>
-
-            <div class="future-heart">♥</div>
-        </div>
-    </section>
-
-    <!-- ENDING -->
-    <section class="ending-section">
-        <div class="ending-content">
-            <span class="section-kicker">OUR JOURNEY CONTINUES</span>
-
-            <h2>Our Story<br>Continues Forever</h2>
-
-            <div class="ending-divider">✦ ♥ ✦</div>
-
-            <p>
-                Some stories are written in books.<br>
-                Ours is written in the moments we share.
-            </p>
-
-            <a href="#story" class="back-to-top">BACK TO OUR STORY ↑</a>
-        </div>
-    </section>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button id="closeLightbox" class="lightbox-close" aria-label="Close album">×</button>
-
-        <button id="lightboxPrev" class="lightbox-nav lightbox-prev" aria-label="Previous photograph">‹</button>
-
-        <div class="lightbox-content">
-            <img id="lightboxImg" alt="Our memory">
-
-            <div class="lightbox-caption">
-                <h3 id="lightboxTitle"></h3>
-                <p id="lightboxText"></p>
-                <span id="lightboxCounter"></span>
-            </div>
-        </div>
-
-        <button id="lightboxNext" class="lightbox-nav lightbox-next" aria-label="Next photograph">›</button>
     </div>
 
-    <!-- FLOATING QUOTE -->
-    <div id="quoteBanner" class="quote-banner"></div>
+    <button
+        id="lightboxNext"
+        class="lightbox-nav lightbox-next">
 
-    <script src="script.js"></script>
+        ›
+
+    </button>
+
+</div>
+
+<!-- ======================================
+     FLOATING QUOTE
+====================================== -->
+
+<div
+    id="quoteBanner"
+    class="quote-banner">
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
