@@ -30,87 +30,21 @@
 <body>
 
 <!-- ======================================
-     GLASS HEART LOADER
+     REALISTIC HEART LOADER
 ====================================== -->
 
 <div id="loader">
 
     <div class="loader-content">
 
-        <div class="heart-glass">
+        <div class="heart-container">
 
-            <svg
-                viewBox="0 0 100 100"
-                class="heart-svg"
-                aria-hidden="true">
+            <div class="heart-liquid"></div>
 
-                <defs>
-
-                    <clipPath id="heartClip">
-
-                        <path
-                            d="
-                            M50 88
-                            C42 80 8 55 8 32
-                            C8 14 31 5 50 27
-                            C69 5 92 14 92 32
-                            C92 55 58 80 50 88Z
-                            " />
-
-                    </clipPath>
-
-                    <linearGradient
-                        id="heartLiquid"
-                        x1="0"
-                        y1="0"
-                        x2="0"
-                        y2="1">
-
-                        <stop
-                            offset="0%"
-                            stop-color="#ffd0ea" />
-
-                        <stop
-                            offset="100%"
-                            stop-color="#e84c96" />
-
-                    </linearGradient>
-
-                </defs>
-
-                <path
-                    class="heart-outline"
-                    d="
-                    M50 88
-                    C42 80 8 55 8 32
-                    C8 14 31 5 50 27
-                    C69 5 92 14 92 32
-                    C92 55 58 80 50 88Z
-                    " />
-
-                <g
-                    class="liquid-fill"
-                    clip-path="url(#heartClip)">
-
-                    <rect
-                        x="0"
-                        y="0"
-                        width="100"
-                        height="100"
-                        fill="url(#heartLiquid)" />
-
-                    <path
-                        class="liquid-wave"
-                        d="M0 35 Q25 28 50 35 T100 35 V100 H0Z"
-                        fill="#ffe4f3" />
-
-                </g>
-
-                <path
-                    class="heart-shine"
-                    d="M24 28 C25 18 35 16 41 24" />
-
-            </svg>
+            <span class="bubble bubble1"></span>
+            <span class="bubble bubble2"></span>
+            <span class="bubble bubble3"></span>
+            <span class="bubble bubble4"></span>
 
         </div>
 
@@ -119,14 +53,8 @@
         </h1>
 
         <p>
-            Filling our hearts with memories...
+            Loading Our Memories...
         </p>
-
-        <div class="loader-track">
-
-            <div class="loader-progress"></div>
-
-        </div>
 
     </div>
 
