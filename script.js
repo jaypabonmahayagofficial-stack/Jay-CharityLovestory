@@ -2,6 +2,10 @@
    LOADER
 ========================================== */
 
+document.body.classList.add(
+"loading"
+);
+
 window.addEventListener(
 "load",
 ()=>{
@@ -13,15 +17,19 @@ document.getElementById(
 
 setTimeout(()=>{
 
-loader.classList.add(
-"hide"
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.style.display="none";
+
+document.body.classList.remove(
+"loading"
 );
 
-document.body.classList.add(
-"loaded"
-);
+},1000);
 
-},3200);
+},3000);
 
 });
 /* ==========================================
