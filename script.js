@@ -2,22 +2,6 @@
    LOADER
 ========================================== */
 
-window.addEventListener("load", () => {
-
-    const loader =
-    document.getElementById("loader");
-
-    setTimeout(() => {
-
-        loader.classList.add("hide");
-
-        document.body.classList.add(
-            "loaded"
-        );
-
-    }, 3200);
-
-});
 window.addEventListener(
 "load",
 ()=>{
@@ -37,10 +21,9 @@ document.body.classList.add(
 "loaded"
 );
 
-},3500);
+},3200);
 
 });
-
 /* ==========================================
    MUSIC PLAYER
 ========================================== */
