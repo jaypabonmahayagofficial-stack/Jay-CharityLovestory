@@ -265,97 +265,318 @@ button{
 ====================================== */
 
 #loader{
-
-    position:fixed;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:99999;
-
-    background:
-    radial-gradient(
-        circle,
-        #2d1737,
-        #100b1b 80%
-    );
-
-    transition:
-    opacity 1s ease,
-    visibility 1s ease;
+6
+ 
+7
+position:fixed;
+8
+ 
+9
+inset:0;
+10
+ 
+11
+z-index:99999;
+12
+ 
+13
+display:flex;
+14
+ 
+15
+justify-content:center;
+16
+ 
+17
+align-items:center;
+18
+ 
+19
+background:
+20
+ 
+21
+radial-gradient(
+22
+circle,
+23
+#2d1737,
+24
+#100b1b 80%
+25
+);
+26
+ 
+27
+transition:
+28
+opacity 1s ease,
+29
+visibility 1s ease;
+30
 }
-
+31
+ 
+32
 #loader.hide{
-
-    opacity:0;
-    visibility:hidden;
+33
+ 
+34
+opacity:0;
+35
+ 
+36
+visibility:hidden;
+37
 }
-
+38
+ 
+39
 .loader-content{
-
-    text-align:center;
+40
+ 
+41
+text-align:center;
+42
 }
-
-.loader-content h1{
-
-    font-family:
-    "Cormorant Garamond",
-    serif;
-
-    color:#ffd7eb;
-
-    margin-top:25px;
-}
-
-.loader-content p{
-
-    color:#d8bfd5;
-}
+43
+ 
+44
+/* HEART */
+45
+ 
+46
 .loader-heart{
-
-    font-size:120px;
-
-    animation:
-    heartbeat 1.6s infinite;
-
-    filter:
-
-    drop-shadow(
-        0 0 25px
-        rgba(255,90,150,.6)
-    );
+47
+ 
+48
+font-size:140px;
+49
+ 
+50
+line-height:1;
+51
+ 
+52
+filter:
+53
+ 
+54
+drop-shadow(
+55
+0 0 25px
+56
+rgba(255,80,140,.6)
+57
+)
+58
+ 
+59
+drop-shadow(
+60
+0 0 60px
+61
+rgba(255,80,140,.3)
+62
+);
+63
+ 
+64
+animation:
+65
+heartbeat 1.3s infinite;
+66
 }
-
+67
+ 
+68
 @keyframes heartbeat{
-
-    0%,100%{
-
-        transform:
-        scale(1);
-    }
-
-    25%{
-
-        transform:
-        scale(1.12);
-    }
-
-    50%{
-
-        transform:
-        scale(.95);
-    }
-
-    75%{
-
-        transform:
-        scale(1.15);
-    }
-
+69
+ 
+70
+0%,100%{
+71
+ 
+72
+transform:
+73
+scale(1);
+74
 }
-
+75
+ 
+76
+25%{
+77
+ 
+78
+transform:
+79
+scale(1.15);
+80
+}
+81
+ 
+82
+50%{
+83
+ 
+84
+transform:
+85
+scale(.95);
+86
+}
+87
+ 
+88
+75%{
+89
+ 
+90
+transform:
+91
+scale(1.2);
+92
+}
+93
+ 
+94
+}
+95
+ 
+96
+/* TEXT */
+97
+ 
+98
+.loader-content h1{
+99
+ 
+100
+margin-top:15px;
+101
+ 
+102
+font-family:
+103
+"Cormorant Garamond",
+104
+serif;
+105
+ 
+106
+font-size:3rem;
+107
+ 
+108
+color:#ffd7eb;
+109
+}
+110
+ 
+111
+.loader-content p{
+112
+ 
+113
+color:#d8bfd5;
+114
+ 
+115
+margin-top:6px;
+116
+}
+117
+ 
+118
+/* BAR */
+119
+ 
+120
+.loader-progress-wrap{
+121
+ 
+122
+width:250px;
+123
+ 
+124
+height:5px;
+125
+ 
+126
+margin-top:25px;
+127
+ 
+128
+border-radius:50px;
+129
+ 
+130
+background:
+131
+rgba(255,255,255,.1);
+132
+ 
+133
+overflow:hidden;
+134
+}
+135
+ 
+136
+.loader-progress{
+137
+ 
+138
+width:0;
+139
+ 
+140
+height:100%;
+141
+ 
+142
+background:
+143
+ 
+144
+linear-gradient(
+145
+90deg,
+146
+#ff77b8,
+147
+#ffd6ec
+148
+);
+149
+ 
+150
+animation:
+151
+progressGrow 3.2s ease forwards;
+152
+}
+153
+ 
+154
+@keyframes progressGrow{
+155
+ 
+156
+to{
+157
+ 
+158
+width:100%;
+159
+}
+160
+ 
+161
+}
 /* ======================================
    MUSIC BUTTON
 ====================================== */
