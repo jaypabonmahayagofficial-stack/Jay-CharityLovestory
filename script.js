@@ -15,37 +15,31 @@ document.getElementById(
     "loader"
 );
 
-setTimeout(()=>{
+const enterWithMusic =
+document.getElementById(
+    "enterWithMusic"
+);
 
-    loader.style.opacity="0";
+enterWithMusic.addEventListener(
+    "click",
+    ()=>{
 
-    setTimeout(()=>{
+        startMusic();
 
-        loader.style.display="none";
+        loader.style.opacity = "0";
 
-        document.body.classList.remove(
-            "loading"
-        );
+        setTimeout(()=>{
 
-        // Auto-play music after loader
-        if (bgMusic) {
-            bgMusic.volume = 0.5;
-            const playPromise = bgMusic.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    if (musicBtn) {
-                        musicBtn.innerHTML = "♫ Pause Music";
-                        musicBtn.classList.add("playing");
-                    }
-                }).catch(() => {
-                    // Autoplay blocked, user needs to click
-                });
-            }
-        }
+            loader.style.display = "none";
 
-    },1000);
+            document.body.classList.remove(
+                "loading"
+            );
 
-},3000);
+        },500);
+
+    }
+);
 
 });
 /* ==========================================
@@ -63,6 +57,100 @@ document.getElementById(
 );
 
 bgMusic.volume = 0.5;
+let autoplayBlocked = false;
+
+function syncMusicButton(){
+
+    const playing = !bgMusic.paused;
+
+    if(playing){
+        autoplayBlocked = false;
+        musicBtn.removeAttribute("title");
+        removeMusicGestureListeners();
+    }
+
+    musicBtn.textContent =
+        playing ? "♫ Pause Music" :
+        autoplayBlocked ? "♫ Tap to Start Music" :
+        "♫ Play Music";
+
+    musicBtn.classList.toggle(
+        "playing",
+        playing
+    );
+
+    musicBtn.setAttribute(
+        "aria-pressed",
+        String(playing)
+    );
+
+}
+
+function removeMusicGestureListeners(){
+
+    document.removeEventListener(
+        "pointerdown",
+        resumeMusicAfterGesture
+    );
+
+    document.removeEventListener(
+        "keydown",
+        resumeMusicAfterGesture
+    );
+
+}
+
+function resumeMusicAfterGesture(event){
+
+    const enterWithMusic =
+        document.getElementById("enterWithMusic");
+
+    if(
+        event.target === musicBtn ||
+        musicBtn.contains(event.target) ||
+        event.target === enterWithMusic ||
+        enterWithMusic.contains(event.target)
+    ){
+        return;
+    }
+
+    removeMusicGestureListeners();
+    startMusic();
+
+}
+
+function startMusic(){
+
+    bgMusic.play().then(
+        syncMusicButton
+    ).catch(error=>{
+
+        syncMusicButton();
+
+        if(error.name === "NotAllowedError"){
+            autoplayBlocked = true;
+            syncMusicButton();
+            musicBtn.title =
+                "Your browser blocked autoplay. Tap to start the music.";
+        }else if(error.name !== "AbortError"){
+            console.error("Could not play background music:", error);
+        }
+
+    });
+
+}
+
+document.addEventListener(
+    "pointerdown",
+    resumeMusicAfterGesture
+);
+
+document.addEventListener(
+    "keydown",
+    resumeMusicAfterGesture
+);
+
+startMusic();
 
 musicBtn.addEventListener(
     "click",
@@ -72,27 +160,22 @@ musicBtn.addEventListener(
 
             try {
 
+                autoplayBlocked = false;
                 await bgMusic.play();
 
-                musicBtn.innerHTML =
-                "♫ Pause Music";
-                musicBtn.classList.add("playing");
+                syncMusicButton();
 
             } catch (error) {
 
-                console.error(
-                    error
-                );
+                console.error("Could not play background music:", error);
 
             }
 
         } else {
 
+            autoplayBlocked = false;
             bgMusic.pause();
-
-            musicBtn.innerHTML =
-            "♫ Play Music";
-            musicBtn.classList.remove("playing");
+            syncMusicButton();
 
         }
 
@@ -101,13 +184,11 @@ musicBtn.addEventListener(
 
 
 bgMusic.addEventListener("play", ()=>{
-    musicBtn.innerHTML = "♫ Pause Music";
-    musicBtn.classList.add("playing");
+    syncMusicButton();
 });
 
 bgMusic.addEventListener("pause", ()=>{
-    musicBtn.innerHTML = "♫ Play Music";
-    musicBtn.classList.remove("playing");
+    syncMusicButton();
 });
 
 /*
@@ -620,6 +701,12 @@ document.createElement(
 
 card.className =
     "memory-card";
+card.setAttribute("role", "button");
+card.tabIndex = 0;
+card.setAttribute(
+    "aria-label",
+    `View ${memory.title} in full screen`
+);
 
 card.innerHTML = `
 
@@ -655,6 +742,18 @@ card.addEventListener(
     ()=>{
 
         openLightbox(index);
+
+    }
+);
+
+card.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key === "Enter" || event.key === " "){
+            event.preventDefault();
+            openLightbox(index);
+        }
 
     }
 );
@@ -699,7 +798,7 @@ card.innerHTML = `
     controls
     playsinline
     webkit-playsinline
-    preload="metadata">
+    preload="none">
 
 <source
     src="${memory.file}"
@@ -897,6 +996,37 @@ closeLightbox();
 
 });
 
+let touchStartX = 0;
+
+lightbox.addEventListener(
+    "touchstart",
+    event=>{
+        touchStartX = event.changedTouches[0].screenX;
+    },
+    { passive:true }
+);
+
+lightbox.addEventListener(
+    "touchend",
+    event=>{
+
+        const swipeDistance =
+            event.changedTouches[0].screenX - touchStartX;
+
+        if(Math.abs(swipeDistance) < 50){
+            return;
+        }
+
+        if(swipeDistance < 0){
+            nextPhoto();
+        }else{
+            previousPhoto();
+        }
+
+    },
+    { passive:true }
+);
+
 document.addEventListener(
 "keydown",
 e=>{
@@ -927,6 +1057,13 @@ const revealItems =
 document.querySelectorAll(
     ".reveal"
 );
+
+const timelineItems =
+document.querySelectorAll(
+    ".timeline-item"
+);
+
+if("IntersectionObserver" in window){
 
 const revealObserver =
 new IntersectionObserver(
@@ -967,11 +1104,6 @@ revealItems.forEach(
 );
 
 
-const timelineItems =
-document.querySelectorAll(
-    ".timeline-item"
-);
-
 const timelineObserver =
 new IntersectionObserver(
 
@@ -1009,6 +1141,18 @@ timelineItems.forEach(
 
     }
 );
+
+}else{
+
+    revealItems.forEach(
+        item=>item.classList.add("active")
+    );
+
+    timelineItems.forEach(
+        item=>item.classList.add("active")
+    );
+
+}
 
 const quotes = [
 
