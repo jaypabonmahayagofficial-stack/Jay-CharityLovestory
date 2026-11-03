@@ -1033,27 +1033,30 @@ document.getElementById(
 "fireflyLayer"
 );
 
-for(let i=0;i<20;i++){
+for(let i=0;i<50;i++){
 
     const firefly =
-    document.createElement(
-    "div"
-    );
+    document.createElement("div");
 
     firefly.className =
     "firefly";
 
     firefly.style.left =
-    (Math.random()*100)
-    +"vw";
+    Math.random()*100 + "vw";
 
     firefly.style.top =
-    (Math.random()*100)
-    +"vh";
+    Math.random()*100 + "vh";
+
+    firefly.style.animationDelay =
+    Math.random()*4 + "s";
+
+    firefly.style.animationDuration =
+    (3 + Math.random()*4) + "s";
 
     fireflyLayer.appendChild(
     firefly
     );
+
 }
 
 /* ==========================================
