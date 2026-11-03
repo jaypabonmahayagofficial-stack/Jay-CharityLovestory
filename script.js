@@ -1006,14 +1006,15 @@ createPetal,
 
 
 /* ==========================================
-   FIREFLIES
+   REALISTIC FIREFLIES
 ========================================== */
+
 const fireflyLayer =
 document.getElementById(
 "fireflyLayer"
 );
 
-for(let i=0;i<80;i++){
+for(let i = 0; i < 80; i++){
 
     const firefly =
     document.createElement("div");
@@ -1022,15 +1023,17 @@ for(let i=0;i<80;i++){
     "firefly";
 
     firefly.style.left =
-    Math.random()*100 + "vw";
+    Math.random() * 100 + "vw";
 
     firefly.style.top =
-    Math.random()*100 + "vh";
+    Math.random() * 100 + "vh";
 
-    firefly.style.setProperty(
-        "--speed",
-        (8 + Math.random()*12) + "s"
-    );
+    firefly.style.animationDuration =
+    (4 + Math.random() * 6) + "s, " +
+    (10 + Math.random() * 10) + "s";
+
+    firefly.style.animationDelay =
+    Math.random() * 5 + "s";
 
     fireflyLayer.appendChild(
         firefly
