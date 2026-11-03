@@ -29,13 +29,18 @@ setTimeout(()=>{
 
         // Auto-play music after loader
         if (bgMusic) {
-            bgMusic.volume = 0.6;
-            bgMusic.play().then(() => {
-                musicBtn.innerHTML = "♫ Pause Music";
-                musicBtn.classList.add("playing");
-            }).catch(() => {
-                // Autoplay blocked, user needs to click
-            });
+            bgMusic.volume = 0.5;
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    if (musicBtn) {
+                        musicBtn.innerHTML = "♫ Pause Music";
+                        musicBtn.classList.add("playing");
+                    }
+                }).catch(() => {
+                    // Autoplay blocked, user needs to click
+                });
+            }
         }
 
     },1000);
@@ -342,12 +347,14 @@ m => m.type === "video"
 );
 
 function animateCounter(
-id,
-target
+    id,
+    target
 ){
 
     const el =
     document.getElementById(id);
+    
+    if (!el) return;
 
     let value = 0;
 
@@ -367,7 +374,7 @@ target
 
         }
 
-    },80);
+    },60);
 
 }
 
@@ -386,10 +393,14 @@ animateCounter(
 memories.length
 );
 
-document.getElementById(
-    "galleryCount"
-).textContent =
-`${photos.length} Photos`;
+setTimeout(() => {
+    if (document.getElementById("photoGallery")) {
+        document.getElementById("photoGallery").style.display = "grid";
+    }
+    if (document.getElementById("videoGallery")) {
+        document.getElementById("videoGallery").style.display = "grid";
+    }
+}, 500);
 
 
 /* ==========================================
