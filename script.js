@@ -264,7 +264,14 @@ type:"video",
 file:"videos/vid13.mp4",
 title:"Video 11",
 text:"A story still being written."
-}
+},
+  
+{
+type:"video",
+file:"videos/vid13.mp4",
+title:"Video 11",
+text:"Swimming and nature viewing at Halseyle Hill Resort"
+},
 ];
 
 /* ==========================================
