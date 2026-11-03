@@ -2195,10 +2195,29 @@ body.loaded
     }
 
 }
-
 /* MOBILE */
 
 @media (max-width:500px){
+
+    /* Background Image */
+
+    .background-scene{
+
+        background:
+        linear-gradient(
+            rgba(10,5,20,.55),
+            rgba(10,5,20,.75)
+        ),
+        url("background.jpg");
+
+        background-position:center center;
+
+        background-size:cover;
+
+        background-repeat:no-repeat;
+
+        background-attachment:scroll;
+    }
 
     .gallery-grid{
 
@@ -2216,16 +2235,27 @@ body.loaded
         padding:
         120px 20px
         60px;
+
+        min-height:100vh;
     }
 
     .hero h1{
 
         font-size:3rem;
+
+        line-height:1.1;
+    }
+
+    .hero h2{
+
+        font-size:1.6rem;
     }
 
     .hero-description{
 
         font-size:.9rem;
+
+        line-height:1.8;
     }
 
     .section-heading h2{
@@ -2252,6 +2282,11 @@ body.loaded
     .lightbox-next{
 
         right:5px;
+    }
+
+    .loader-gif{
+
+        width:160px;
     }
 
 }
