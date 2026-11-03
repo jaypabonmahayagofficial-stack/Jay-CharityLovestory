@@ -18,7 +18,28 @@ window.addEventListener("load", () => {
     }, 3200);
 
 });
+window.addEventListener(
+"load",
+()=>{
 
+const loader =
+document.getElementById(
+"loader"
+);
+
+setTimeout(()=>{
+
+loader.classList.add(
+"hide"
+);
+
+document.body.classList.add(
+"loaded"
+);
+
+},3500);
+
+});
 
 /* ==========================================
    MUSIC PLAYER
