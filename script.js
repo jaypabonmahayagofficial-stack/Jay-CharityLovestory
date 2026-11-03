@@ -1,6 +1,24 @@
-/* ======================================
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener("load", () => {
+
+    const loader =
+    document.getElementById("loader");
+
+    setTimeout(() => {
+
+        loader.classList.add("hide");
+
+    }, 2000);
+
+});
+
+
+/* =====================================================
    MUSIC
-====================================== */
+===================================================== */
 
 const musicBtn =
 document.getElementById("musicBtn");
@@ -8,160 +26,377 @@ document.getElementById("musicBtn");
 const bgMusic =
 document.getElementById("bgMusic");
 
-musicBtn.addEventListener(
-"click",
-() => {
+musicBtn.addEventListener("click", () => {
 
-    bgMusic.play();
+    if (bgMusic.paused) {
 
-    musicBtn.innerHTML =
-    "❤️ Music Playing";
+        bgMusic.play();
 
-}
-);
+        musicBtn.innerHTML =
+        "⏸ Pause Music";
 
-/* ======================================
-   MEMORY DATA
-====================================== */
+    } else {
+
+        bgMusic.pause();
+
+        musicBtn.innerHTML =
+        "🎵 Play Music";
+
+    }
+
+});
+
+
+/* =====================================================
+   MEMORIES
+   EDIT THIS SECTION ONLY
+===================================================== */
 
 const memories = [
 
 {
-    type:"image",
-    file:"photos/photo1.jpg",
-    chapter:"Chapter 01",
-    title:"The Beginning",
-    text:"Every journey starts somewhere. This was one of the moments that became part of our story."
+    type: "image",
+    file: "photos/photo1.jpg",
+    title: "The Beginning",
+    text: "Where one unforgettable chapter started."
 },
 
 {
-    type:"video",
-    file:"videos/video1.mp4",
-    chapter:"Chapter 02",
-    title:"An Adventure Together",
-    text:"A memory worth revisiting again and again."
+    type: "image",
+    file: "photos/photo2.jpg",
+    title: "Favorite Day",
+    text: "One of our most treasured memories."
 },
 
 {
-    type:"image",
-    file:"photos/photo2.jpg",
-    chapter:"Chapter 03",
-    title:"Favorite Moment",
-    text:"Some memories become timeless because of who we shared them with."
+    type: "image",
+    file: "photos/photo3.jpg",
+    title: "Adventure Together",
+    text: "Every adventure became a story."
 },
 
 {
-    type:"video",
-    file:"videos/video2.mp4",
-    chapter:"Chapter 04",
-    title:"Another Beautiful Day",
-    text:"A small moment that became unforgettable."
+    type: "video",
+    file: "videos/video1.mp4",
+    title: "Road Trip",
+    text: "Captured forever in motion."
 },
 
 {
-    type:"image",
-    file:"photos/photo3.jpg",
-    chapter:"Chapter 05",
-    title:"Memories We Treasure",
-    text:"Every photo tells a piece of our story."
+    type: "video",
+    file: "videos/video2.mp4",
+    title: "Special Moment",
+    text: "A memory worth revisiting."
 }
 
 ];
 
-/* ======================================
-   BUILD MEMORY SECTIONS
-====================================== */
 
-const memoryFeed =
-document.getElementById(
-"memoryFeed"
+/* =====================================================
+   STATS COUNTERS
+===================================================== */
+
+const photoCount =
+memories.filter(
+item => item.type === "image"
+).length;
+
+const videoCount =
+memories.filter(
+item => item.type === "video"
+).length;
+
+const memoryCount =
+memories.length;
+
+animateCounter(
+"photoCount",
+photoCount
 );
 
-memories.forEach(memory => {
+animateCounter(
+"videoCount",
+videoCount
+);
 
-    const section =
-    document.createElement(
-    "div"
+animateCounter(
+"memoryCount",
+memoryCount
+);
+
+function animateCounter(
+elementId,
+target
+){
+
+    const element =
+    document.getElementById(
+    elementId
     );
 
-    section.classList.add(
-    "memory-item"
-    );
+    let count = 0;
 
-    let mediaHTML = "";
+    const interval =
+    setInterval(()=>{
+
+        count++;
+
+        element.innerHTML =
+        count;
+
+        if(count >= target){
+
+            clearInterval(
+            interval
+            );
+
+        }
+
+    },80);
+
+}
+
+
+/* =====================================================
+   FEATURED MEMORY
+===================================================== */
+
+const featuredMedia =
+document.getElementById(
+"featuredMedia"
+);
+
+const featuredTitle =
+document.getElementById(
+"featuredTitle"
+);
+
+const featuredText =
+document.getElementById(
+"featuredText"
+);
+
+let featuredIndex = 0;
+
+function updateFeatured(){
+
+    const memory =
+    memories[featuredIndex];
+
+    featuredTitle.innerHTML =
+    memory.title;
+
+    featuredText.innerHTML =
+    memory.text;
 
     if(memory.type === "image"){
 
-        mediaHTML = `
-            <div class="memory-media">
-
-                <img
-                src="${memory.file}"
-                alt="${memory.title}"
-                class="memory-image">
-
-            </div>
+        featuredMedia.innerHTML =
+        `
+        <img
+        src="${memory.file}"
+        alt="${memory.title}">
         `;
 
-    } else {
+    }else{
 
-        mediaHTML = `
-            <div class="memory-media">
+        featuredMedia.innerHTML =
+        `
+        <video
+        autoplay
+        muted
+        loop
+        playsinline>
 
-                <video
-                autoplay
-                muted
-                loop
-                playsinline>
+        <source
+        src="${memory.file}"
+        type="video/mp4">
 
-                    <source
-                    src="${memory.file}"
-                    type="video/mp4">
-
-                </video>
-
-            </div>
+        </video>
         `;
 
     }
 
-    section.innerHTML = `
+    featuredIndex++;
 
-        ${mediaHTML}
+    if(
+        featuredIndex >=
+        memories.length
+    ){
 
-        <div class="memory-text">
+        featuredIndex = 0;
 
-            <span>
+    }
 
-                ${memory.chapter}
+}
 
-            </span>
+updateFeatured();
 
-            <h2>
+setInterval(
+updateFeatured,
+6000
+);
 
+
+/* =====================================================
+   PHOTO GALLERY
+===================================================== */
+
+const photoGallery =
+document.getElementById(
+"photoGallery"
+);
+
+const videoGallery =
+document.getElementById(
+"videoGallery"
+);
+
+memories.forEach(memory => {
+
+    const card =
+    document.createElement("div");
+
+    card.className =
+    "memory-card";
+
+    if(memory.type === "image"){
+
+        card.innerHTML = `
+
+        <img
+        src="${memory.file}"
+        alt="${memory.title}">
+
+        <div class="memory-content">
+
+            <h3>
                 ${memory.title}
-
-            </h2>
+            </h3>
 
             <p>
-
                 ${memory.text}
-
             </p>
 
         </div>
 
-    `;
+        `;
 
-    memoryFeed.appendChild(
-    section
-    );
+        card.addEventListener(
+        "click",
+        ()=>{
+            openLightbox(
+            memory.file
+            );
+        }
+        );
+
+        photoGallery.appendChild(
+        card
+        );
+
+    }else{
+
+        card.innerHTML = `
+
+        <video
+        autoplay
+        muted
+        loop
+        playsinline>
+
+        <source
+        src="${memory.file}"
+        type="video/mp4">
+
+        </video>
+
+        <div class="memory-content">
+
+            <h3>
+                ${memory.title}
+            </h3>
+
+            <p>
+                ${memory.text}
+            </p>
+
+        </div>
+
+        `;
+
+        videoGallery.appendChild(
+        card
+        );
+
+    }
 
 });
 
-/* ======================================
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+const lightbox =
+document.getElementById(
+"lightbox"
+);
+
+const lightboxImg =
+document.getElementById(
+"lightboxImg"
+);
+
+const closeLightbox =
+document.getElementById(
+"closeLightbox"
+);
+
+function openLightbox(src){
+
+    lightbox.style.display =
+    "flex";
+
+    lightboxImg.src =
+    src;
+
+}
+
+closeLightbox.addEventListener(
+"click",
+()=>{
+
+    lightbox.style.display =
+    "none";
+
+});
+
+lightbox.addEventListener(
+"click",
+(event)=>{
+
+    if(
+    event.target ===
+    lightbox
+    ){
+
+        lightbox.style.display =
+        "none";
+
+    }
+
+});
+
+
+/* =====================================================
    SCROLL REVEAL
-====================================== */
+===================================================== */
+
+const revealElements =
+document.querySelectorAll(
+".reveal"
+);
 
 const revealObserver =
 new IntersectionObserver(
@@ -170,49 +405,9 @@ new IntersectionObserver(
 
     entries.forEach(entry=>{
 
-        if(entry.isIntersecting){
-
-            entry.target.classList.add(
-            "show"
-            );
-
-        }
-
-    });
-
-},
-
-{
-    threshold:.15
-}
-
-);
-
-document
-.querySelectorAll(".memory-item")
-.forEach(item=>{
-
-    revealObserver.observe(item);
-
-});
-
-/* ======================================
-   REVEAL OTHER SECTIONS
-====================================== */
-
-const sections =
-document.querySelectorAll(
-".reveal"
-);
-
-const sectionObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
+        if(
+        entry.isIntersecting
+        ){
 
             entry.target.classList.add(
             "active"
@@ -225,300 +420,55 @@ new IntersectionObserver(
 },
 
 {
-    threshold:.1
+threshold:0.15
 }
 
 );
 
-sections.forEach(section=>{
+revealElements.forEach(
+element=>{
 
-    sectionObserver.observe(
-    section
+    revealObserver.observe(
+    element
     );
 
-});
-
-/* ======================================
-   LIGHTBOX
-====================================== */
-
-const lightbox =
-document.getElementById(
-"lightbox"
+}
 );
 
-const lightboxImg =
-document.getElementById(
-"lightboxImg"
-);
 
-const closeBtn =
-document.getElementById(
-"closeLightbox"
-);
-
-document.addEventListener(
-"click",
-e=>{
-
-if(
-e.target.classList.contains(
-"memory-image"
-)
-){
-
-    lightbox.style.display =
-    "flex";
-
-    lightboxImg.src =
-    e.target.src;
-
-    createHeartBurst();
-
-}
-
-});
-
-closeBtn.addEventListener(
-"click",
-()=>{
-
-    lightbox.style.display =
-    "none";
-
-});
-
-lightbox.addEventListener(
-"click",
-e=>{
-
-if(e.target === lightbox){
-
-    lightbox.style.display =
-    "none";
-
-}
-
-});
-
-/* ======================================
-   CINEMATIC IMAGE ZOOM
-====================================== */
-
-window.addEventListener(
-"scroll",
-()=>{
-
-document
-.querySelectorAll(
-".memory-image"
-)
-.forEach(img=>{
-
-    const rect =
-    img.getBoundingClientRect();
-
-    const center =
-    window.innerHeight / 2;
-
-    const distance =
-    Math.abs(
-    rect.top - center
-    );
-
-    const scale =
-    Math.max(
-    1,
-    1.08 - distance/3000
-    );
-
-    img.style.transform =
-    `scale(${scale})`;
-
-});
-
-});
-
-/* ======================================
-   FALLING LEAVES
-====================================== */
-
-function createLeaf(){
-
-    const leaf =
-    document.createElement("div");
-
-    leaf.className =
-    "leaf";
-
-    leaf.innerHTML =
-    "🍂";
-
-    leaf.style.left =
-    Math.random()*100
-    + "vw";
-
-    leaf.style.animationDuration =
-    (
-    5 +
-    Math.random()*8
-    ) + "s";
-
-    document.body.appendChild(
-    leaf
-    );
-
-    setTimeout(
-    ()=>leaf.remove(),
-    15000
-    );
-
-}
-
-setInterval(
-createLeaf,
-450
-);
-
-/* ======================================
-   FIREFLIES
-====================================== */
-
-for(let i=0;i<40;i++){
-
-    const firefly =
-    document.createElement(
-    "div"
-    );
-
-    firefly.className =
-    "firefly";
-
-    firefly.style.left =
-    Math.random()*100
-    + "vw";
-
-    firefly.style.top =
-    Math.random()*100
-    + "vh";
-
-    firefly.style.animationDelay =
-    Math.random()*5
-    + "s";
-
-    document.body.appendChild(
-    firefly
-    );
-
-}
-
-/* ======================================
-   FLOATING HEARTS
-====================================== */
-
-function createHeart(){
-
-    const heart =
-    document.createElement("div");
-
-    heart.className =
-    "floating-heart";
-
-    heart.innerHTML =
-    "❤️";
-
-    heart.style.left =
-    Math.random()*100
-    + "vw";
-
-    document.body.appendChild(
-    heart
-    );
-
-    setTimeout(
-    ()=>heart.remove(),
-    8000
-    );
-
-}
-
-setInterval(
-createHeart,
-2500
-);
-
-/* ======================================
-   HEART BURST
-====================================== */
-
-function createHeartBurst(){
-
-    for(let i=0;i<12;i++){
-
-        const heart =
-        document.createElement("div");
-
-        heart.className =
-        "floating-heart";
-
-        heart.innerHTML =
-        "❤️";
-
-        heart.style.left =
-        (
-        window.innerWidth/2
-        +
-        (Math.random()*250-125)
-        )
-        + "px";
-
-        heart.style.bottom =
-        "35vh";
-
-        document.body.appendChild(
-        heart
-        );
-
-        setTimeout(
-        ()=>heart.remove(),
-        5000
-        );
-
-    }
-
-}
-
-/* ======================================
-   FLOATING MEMORY QUOTES
-====================================== */
+/* =====================================================
+   FLOATING QUOTES
+===================================================== */
 
 const quotes = [
 
-"❤️ Every memory has a story.",
+"❤️ Every memory tells a story.",
 
-"❤️ The best adventures become favorite memories.",
+"❤️ Every picture is a chapter.",
 
-"❤️ Some moments deserve to be remembered forever.",
+"❤️ Every adventure becomes a memory.",
 
-"❤️ Every photo is a chapter.",
+"❤️ Some moments deserve to last forever.",
 
-"❤️ Every video is a moment frozen in time.",
+"❤️ Memories are life's greatest treasures.",
 
 "❤️ Our story is still being written."
 
 ];
-
-let quoteIndex = 0;
 
 const quoteBanner =
 document.getElementById(
 "quoteBanner"
 );
 
+let quoteIndex = 0;
+
 function rotateQuote(){
 
     quoteBanner.innerHTML =
-    quotes[quoteIndex];
+    quotes[
+    quoteIndex
+    ];
 
     quoteIndex++;
 
@@ -537,6 +487,146 @@ rotateQuote();
 
 setInterval(
 rotateQuote,
-6000
+5000
 );
-`
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createHeart(){
+
+    const heart =
+    document.createElement(
+    "div"
+    );
+
+    heart.className =
+    "floating-heart";
+
+    heart.innerHTML =
+    "❤️";
+
+    heart.style.left =
+    Math.random()*100 +
+    "vw";
+
+    document.body.appendChild(
+    heart
+    );
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },8000);
+
+}
+
+setInterval(
+createHeart,
+2800
+);
+
+
+/* =====================================================
+   FALLING LEAVES
+===================================================== */
+
+function createLeaf(){
+
+    const leaf =
+    document.createElement(
+    "div"
+    );
+
+    leaf.className =
+    "leaf";
+
+    leaf.innerHTML =
+    "🍂";
+
+    leaf.style.left =
+    Math.random()*100 +
+    "vw";
+
+    leaf.style.animationDuration =
+    (
+        6 +
+        Math.random()*6
+    ) + "s";
+
+    document.body.appendChild(
+    leaf
+    );
+
+    setTimeout(()=>{
+
+        leaf.remove();
+
+    },15000);
+
+}
+
+setInterval(
+createLeaf,
+900
+);
+
+
+/* =====================================================
+   FIREFLIES
+===================================================== */
+
+for(let i=0;i<30;i++){
+
+    const firefly =
+    document.createElement(
+    "div"
+    );
+
+    firefly.className =
+    "firefly"ument.body.appendChild(
+    firefly
+    );
+
+}
+
+
+/* =====================================================
+   PARALLAX HERO
+===================================================== */
+
+document.addEventListener(
+"mousemove",
+(event)=>{
+
+    const hero =
+    document.querySelector(
+    ".hero-content"
+    );
+
+    if(!hero) return;
+
+    const x =
+    (
+    event.clientX /
+    window.innerWidth
+    ) - 0.5;
+
+    const y =
+    (
+    event.clientY /
+    window.innerHeight
+    ) - 0.5;
+
+    hero.style.transform =
+    `
+    translate(
+        ${x*15}px,
+        ${y*15}px
+    )
+    `;
+
+});
