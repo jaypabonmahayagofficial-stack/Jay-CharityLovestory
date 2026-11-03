@@ -657,30 +657,29 @@ document.getElementById(
 );
 
 videos.forEach(
-memory=>{
+    memory=>{
 
 const card =
 document.createElement(
-"div"
+    "div"
 );
 
 card.className =
-"memory-card";
+    "memory-card";
 
 card.innerHTML = `
 
 <div class="memory-image-wrap">
 
 <video
-controls
-muted
-playsinline
-webkit-playsinline
-preload="metadata">
+    controls
+    playsinline
+    webkit-playsinline
+    preload="metadata">
 
 <source
-src="${memory.file}"
-type="video/mp4">
+    src="${memory.file}"
+    type="video/mp4">
 
 Your browser does not support video.
 
@@ -692,19 +691,19 @@ Your browser does not support video.
 
 <span class="memory-tag">
 
-VIDEO MEMORY
+    VIDEO MEMORY
 
 </span>
 
 <h3>
 
-${memory.title}
+    ${memory.title}
 
 </h3>
 
 <p>
 
-${memory.text}
+    ${memory.text}
 
 </p>
 
@@ -713,7 +712,7 @@ ${memory.text}
 `;
 
 videoGallery.appendChild(
-card
+    card
 );
 
 });
@@ -902,50 +901,90 @@ previousPhoto();
 
 const revealItems =
 document.querySelectorAll(
-".reveal"
+    ".reveal"
 );
 
 const revealObserver =
 new IntersectionObserver(
 
-(entries)=>{
+    (entries)=>{
 
-entries.forEach(
-entry=>{
+        entries.forEach(
+            entry=>{
 
-if(
-entry.isIntersecting
-){
+                if(
+                    entry.isIntersecting
+                ){
 
-entry.target.classList
-.add("active");
+                    entry.target.classList
+                    .add("active");
+                    revealObserver.unobserve(entry.target);
 
-}
+                }
 
-});
+            });
 
-},
+    },
 
-{
-threshold:.15
-}
+    {
+        threshold:.1
+    }
 
 );
 
 revealItems.forEach(
-item=>{
+    item=>{
 
-revealObserver.observe(
-item
+        revealObserver.observe(
+            item
+        );
+
+    }
 );
 
-}
+
+const timelineItems =
+document.querySelectorAll(
+    ".timeline-item"
 );
 
+const timelineObserver =
+new IntersectionObserver(
 
-/* ==========================================
-   QUOTES
-========================================== */
+    (entries)=>{
+
+        entries.forEach(
+            entry=>{
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target.classList
+                    .add("active");
+                    timelineObserver.unobserve(entry.target);
+
+                }
+
+            });
+
+    },
+
+    {
+        threshold:.2
+    }
+
+);
+
+timelineItems.forEach(
+    item=>{
+
+        timelineObserver.observe(
+            item
+        );
+
+    }
+);
 
 const quotes = [
 
@@ -1074,14 +1113,38 @@ createPetal,
 
 
 /* ==========================================
-   REALISTIC FIREFLIES
+   SPARKLES
 ========================================== */
-const fireflyLayer =
+const sparkleLayer =
 document.getElementById(
-"fireflyLayer"
+    "sparkleLayer"
 );
 
-for(let i=0;i<50;i++){
+function createSparkle(){
+    const sparkle =
+    document.createElement("div");
+    
+    sparkle.className = "sparkle";
+    
+    sparkle.style.left = Math.random()*100 + "vw";
+    sparkle.style.top = Math.random()*100 + "vh";
+    sparkle.style.animationDuration = (1.5 + Math.random()*2) + "s";
+    sparkle.style.animationDelay = Math.random()*2 + "s";
+    
+    sparkleLayer.appendChild(sparkle);
+    
+    setTimeout(()=>{
+        sparkle.remove();
+    }, 4000);
+}
+
+setInterval(createSparkle, 300);
+const fireflyLayer =
+document.getElementById(
+    "fireflyLayer"
+);
+
+for(let i=0;i<60;i++){
 
     const firefly =
     document.createElement("div");
@@ -1096,10 +1159,10 @@ for(let i=0;i<50;i++){
     Math.random()*100 + "vh";
 
     firefly.style.animationDelay =
-    Math.random()*4 + "s";
+    Math.random()*5 + "s, " + Math.random()*5 + "s";
 
     firefly.style.animationDuration =
-    (3 + Math.random()*4) + "s";
+    (10 + Math.random()*15) + "s, " + (2 + Math.random()*3) + "s";
 
     fireflyLayer.appendChild(
     firefly
