@@ -266,9 +266,11 @@ button{
 
     position:fixed;
 
-    inset:0;
+    top:0;
+    left:0;
 
-    z-index:999999;
+    width:100vw;
+    height:100vh;
 
     display:flex;
 
@@ -277,17 +279,15 @@ button{
     align-items:center;
 
     background:
-
     radial-gradient(
         circle,
-        #2d1737,
-        #170f26 70%,
-        #0e0a18
+        #241233,
+        #100b1b 85%
     );
 
-    transition:
-    opacity 1s ease,
-    visibility 1s ease;
+    z-index:999999999;
+
+    overflow:hidden;
 }
 
 #loader.hide{
@@ -304,61 +304,33 @@ button{
 
 .loader-gif{
 
-    width:220px;
+    width:250px;
 
-    margin-bottom:20px;
+    display:block;
 
-    filter:
+    margin:0 auto 20px;
 
-    drop-shadow(
-        0 0 20px
-        rgba(255,100,170,.5)
-    )
+    position:relative;
 
-    drop-shadow(
-        0 0 60px
-        rgba(255,100,170,.25)
-    );
-
-    animation:
-    floatHeart 3s ease-in-out infinite;
+    z-index:2;
 }
 
-@keyframes floatHeart{
+.loader-content{
 
-    0%,100%{
+    display:flex;
 
-        transform:
-        translateY(0);
-    }
+    flex-direction:column;
 
-    50%{
+    justify-content:center;
 
-        transform:
-        translateY(-10px);
-    }
+    align-items:center;
+
+    text-align:center;
 }
+body.loading{
 
-.loader-content h1{
-
-    font-family:
-    "Cormorant Garamond",
-    serif;
-
-    font-size:3rem;
-
-    color:#ffd7eb;
+    overflow:hidden;
 }
-
-.loader-content p{
-
-    color:#d8bfd5;
-
-    margin-top:8px;
-
-    font-size:.95rem;
-}
-
 /* ======================================
    MUSIC BUTTON
 ====================================== */
