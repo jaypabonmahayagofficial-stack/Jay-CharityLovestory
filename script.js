@@ -516,6 +516,18 @@ function createHeart() {
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     setInterval(createHeart, 4000);
 }
+/* =====================================================
+   HEART LOADER
+===================================================== */
+
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+
+    // Keep the loader visible until the heart has filled.
+    setTimeout(() => {
+        loader.classList.add("hide");
+    }, 2600);
+});
 
 
 /* =====================================================
