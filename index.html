@@ -62,9 +62,10 @@
 ====================================== -->
 <div class="background-scene"></div>
 
-<div id="petalLayer"></div>
-<div id="heartLayer"></div>
-<div id="fireflyLayer"></div>
+    <div id="petalLayer"></div>
+    <div id="heartLayer"></div>
+    <div id="fireflyLayer"></div>
+    <div id="sparkleLayer"></div>
 
 <!-- ======================================
      MUSIC
@@ -174,57 +175,41 @@
      STATS
 ====================================== -->
 
-<section class="stats-section reveal">
-
-    <div class="stat-card">
-
-        <span class="stat-icon">
-            ♡
-        </span>
-
-        <h2 id="photoCount">
-            0
-        </h2>
-
-        <span>
-            Photos
-        </span>
-
-    </div>
-
-    <div class="stat-card">
-
-        <span class="stat-icon">
-            ✧
-        </span>
-
-        <h2 id="videoCount">
-            0
-        </h2>
-
-        <span>
-            Videos
-        </span>
-
-    </div>
-
-    <div class="stat-card">
-
-        <span class="stat-icon">
-            ♥
-        </span>
-
-        <h2 id="memoryCount">
-            0
-        </h2>
-
-        <span>
-            Memories
-        </span>
-
-    </div>
-
-</section>
+    <section class="stats-section reveal">
+        <div class="stat-card reveal">
+            <span class="stat-icon">
+                ♡
+            </span>
+            <h2 id="photoCount">
+                0
+            </h2>
+            <span>
+                Photos
+            </span>
+        </div>
+        <div class="stat-card reveal">
+            <span class="stat-icon">
+                ✧
+            </span>
+            <h2 id="videoCount">
+                0
+            </h2>
+            <span>
+                Videos
+            </span>
+        </div>
+        <div class="stat-card reveal">
+            <span class="stat-icon">
+                ♥
+            </span>
+            <h2 id="memoryCount">
+                0
+            </h2>
+            <span>
+                Memories
+            </span>
+        </div>
+    </section>
 
 <!-- ======================================
      FEATURED MEMORY
@@ -255,35 +240,37 @@
 
     <div class="featured-card">
 
-        <div class="featured-image-wrap">
+    <div class="featured-image-wrap">
 
-            <div id="featuredMedia"></div>
+        <div id="featuredMedia"></div>
 
-            <div class="featured-overlay"></div>
+        <div class="featured-overlay"></div>
 
-            <span class="featured-label">
+        <span class="featured-label">
 
-                OUR MEMORY BOOK
+            OUR MEMORY BOOK
 
-            </span>
+        </span>
 
-            <button
-                id="featuredPrev"
-                class="featured-nav prev">
+        <button
+            id="featuredPrev"
+            class="featured-nav prev"
+            aria-label="Previous memory">
 
-                ‹
+            ‹
 
-            </button>
+        </button>
 
-            <button
-                id="featuredNext"
-                class="featured-nav next">
+        <button
+            id="featuredNext"
+            class="featured-nav next"
+            aria-label="Next memory">
 
-                ›
+            ›
 
-            </button>
+        </button>
 
-        </div>
+    </div>
 
         <div class="featured-content">
 
@@ -395,66 +382,66 @@
 
     </div>
 
-    <div class="timeline">
+        <div class="timeline">
 
-        <div class="timeline-item">
+            <div class="timeline-item reveal">
 
-            <div class="timeline-dot">♥</div>
+                <div class="timeline-dot">♥</div>
 
-            <div class="timeline-content">
+                <div class="timeline-content">
 
-                <span class="timeline-date">
+                    <span class="timeline-date">
 
-                    CHAPTER 01
+                        CHAPTER 01
 
-                </span>
+                    </span>
 
-                <h3>
+                    <h3>
 
-                    The Beginning
+                        The Beginning
 
-                </h3>
+                    </h3>
 
-                <p>
+                    <p>
 
-                    Where everything started.
+                        Where everything started.
 
-                </p>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot">♥</div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-date">
+
+                        CHAPTER 02
+
+                    </span>
+
+                    <h3>
+
+                        Adventures Together
+
+                    </h3>
+
+                    <p>
+
+                        Traveling, exploring,
+                        and making memories.
+
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot">♥</div>
-
-            <div class="timeline-content">
-
-                <span class="timeline-date">
-
-                    CHAPTER 02
-
-                </span>
-
-                <h3>
-
-                    Adventures Together
-
-                </h3>
-
-                <p>
-
-                    Traveling, exploring,
-                    and making memories.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
 
 </section>
 
@@ -490,7 +477,7 @@
 
             <span>
 
-                Click any photo to view full album
+                Click any photo to view full screen
 
             </span>
 
