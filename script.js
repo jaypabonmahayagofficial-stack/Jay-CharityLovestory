@@ -415,15 +415,15 @@ text:"Swimming and nature viewing at Halseyle Hill Resort"
 {
 type:"video",
 file:"videos/vid15.mp4",
-title:"Video 14",
-text:"Swimming and nature viewing at Halseyle Hill Resort"
+title:"Video 15",
+text:"At Medina Bay, climbing trees together, breathing in the fresh sea breeze, and sharing endless laughter. Sometimes, the simplest moments become the most beautiful memories."
 },
 
 {
 type:"video",
 file:"videos/vid16.mp4",
-title:"Video 14",
-text:"Swimming and nature viewing at Halseyle Hill Resort"
+title:"Video 16",
+text:"At Medina Bay, climbing trees together, breathing in the fresh sea breeze, and sharing endless laughter. Sometimes, the simplest moments become the most beautiful memories."
 }
 ];
 
