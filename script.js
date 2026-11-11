@@ -150,42 +150,42 @@ document.addEventListener("DOMContentLoaded", () => {
             type: "image",
             file: "photos/photo18.jpeg",
             title: "Memory 18",
-            text: "Forever in our hearts."
+            text: "Enjoying the short moment"
         },
 
         {
             type: "image",
             file: "photos/photo19.jpeg",
             title: "Memory 19",
-            text: "Forever in our hearts."
+            text: "Laughing together"
         },
 
         {
             type: "image",
             file: "photos/photo20.jpeg",
             title: "Memory 20",
-            text: "Forever in our hearts."
+            text: "Every smile makes the world happy"
         },
 
         {
             type: "image",
             file: "photos/photo21.jpeg",
             title: "Memory 21",
-            text: "Forever in our hearts."
+            text: "Always and forever I will love you"
         },
 
         {
             type: "image",
             file: "photos/photo22.jpeg",
             title: "Memory 22",
-            text: "Forever in our hearts."
+            text: "Forever in our hearts at medina climbing a big tree together"
         },
 
         {
             type: "image",
             file: "photos/photo23.jpeg",
             title: "Memory 23",
-            text: "Forever in our hearts."
+            text: "With my diwata"
         },
 
 
