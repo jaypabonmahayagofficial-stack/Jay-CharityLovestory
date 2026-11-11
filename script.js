@@ -206,7 +206,7 @@ const memories = [
 type:"image",
 file:"photos/Photo1.jpeg",
 title:"Memory 01",
-text:"A special moment together."
+text:"A beautiful day at White Island, Camiguin! Swimming, enjoying the breathtaking views, sharing laughter, and making unforgettable memories together. Simple moments, endless happiness. ❤️🏝️"
 },
 
 {
@@ -220,7 +220,7 @@ text:"A beautiful chapter."
 type:"image",
 file:"photos/Photo3.png",
 title:"Memory 03",
-text:"One of our favorite memories."
+text:"One of our favorite memories, white Island,Camiguin."
 },
 
 {
@@ -241,79 +241,120 @@ text:"A moment worth remembering."
 type:"image",
 file:"photos/photo6.jpeg",
 title:"Memory 06",
-text:"Another unforgettable day."
+text:"Another unforgettable day, Celebrating your birthday at Katunggan Park Camiguin Island"
 },
 
 {
 type:"image",
 file:"photos/photo7.jpeg",
 title:"Memory 07",
-text:"A memory filled with happiness."
+text:"A memory filled with happiness, I'm very happy when I see your eyes and smile looking at the beautiful flowers"
 },
 
 {
 type:"image",
 file:"photos/Photo8.jpeg",
 title:"Memory 08",
-text:"A beautiful adventure."
+text:"The most important day, it's the day you said we're official"
 },
 
 {
 type:"image",
 file:"photos/Photo9.jpeg",
 title:"Memory 09",
-text:"A treasured moment."
+text:"A treasured moment, your bading miguel"
 },
 
 {
 type:"image",
 file:"photos/photo10.jpeg",
 title:"Memory 10",
-text:"One of our favorites."
+text:"One of our favorites, our first night date"
 },
 
 {
 type:"image",
 file:"photos/Photo11.jpeg",
 title:"Memory 11",
-text:"A wonderful chapter."
+text:"On board the ship, heading to the beautiful island of Camiguin."
 },
 
 {
 type:"image",
 file:"photos/Photo12.jpeg",
 title:"Memory 12",
-text:"A memory frozen in time."
+text:"At Camiguin Island eating luanch together"
 },
 
 {
 type:"image",
 file:"photos/photo13.jpeg",
 title:"Memory 13",
-text:"Another beautiful moment."
+text:"Another beautiful moment at Medina Bay, simply taking in the breathtaking view of the sea, feeling the fresh breeze, and appreciating the beauty of nature. Sometimes, happiness is found in the simplest moments and the most peaceful places. 🌊❤️"
 },
 
 {
 type:"image",
 file:"photos/photo14.png",
 title:"Memory 14",
-text:"A treasured memory."
+text:"A treasured memory at Talisayan waiting for the sunset"
 },
 
 {
 type:"image",
 file:"photos/photo15.jpeg",
 title:"Memory 15",
-text:"A moment to cherish."
+text:"A moment to cherish at Halseyle Hill Garden Resort"
 },
 
 {
 type:"image",
 file:"photos/photo16.jpeg",
 title:"Memory 16",
+text:"Night rides with you"
+},
+{
+type:"image",
+file:"photos/photo17.jpeg",
+title:"Memory 17",
 text:"Forever in our hearts."
 },
-
+{
+type:"image",
+file:"photos/photo18.jpeg",
+title:"Memory 18",
+text:"Forever in our hearts."
+},
+{
+type:"image",
+file:"photos/photo19.jpeg",
+title:"Memory 19",
+text:"Forever in our hearts."
+},
+{
+type:"image",
+file:"photos/photo20.jpeg",
+title:"Memory 20",
+text:"Forever in our hearts."
+},
+{
+type:"image",
+file:"photos/photo21.jpeg",
+title:"Memory 21",
+text:"Forever in our hearts."
+},
+{
+type:"image",
+file:"photos/photo22.jpeg",
+title:"Memory 22",
+text:"Forever in our hearts."
+},
+{
+type:"image",
+file:"photos/photo23.jpeg",
+title:"Memory 23",
+text:"Forever in our hearts."
+},
 {
 type:"video",
 file:"videos/vid1.mp4",
@@ -424,6 +465,18 @@ type:"video",
 file:"videos/vid16.mp4",
 title:"Video 16",
 text:"At Medina Bay, climbing trees together, breathing in the fresh sea breeze, and sharing endless laughter. Sometimes, the simplest moments become the most beautiful memories."
+},
+{
+type:"video",
+file:"videos/vid17.mp4",
+title:"Video 17",
+text:I'm happiest when I see you smiling and enjoying every little moment."
+},
+{
+type:"video",
+file:"videos/vid17.mp4",
+title:"Video 17",
+text:"At Medina Bay, surrounded by nature and the fresh sea breeze, I find myself looking at the most beautiful and prettiest woman in my life. It's not just the place that makes the moment special, but having you beside me. Every smile of yours makes the memory even more beautiful. ❤️"
 }
 ];
 
