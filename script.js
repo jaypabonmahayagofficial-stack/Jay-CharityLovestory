@@ -187,6 +187,19 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Memory 23",
             text: "With my diwata"
         },
+         {
+            type: "image",
+            file: "photos/photo24.jpeg",
+            title: "Memory 24",
+            text: "Love Hip-Hop? hahaha"
+        },
+       
+         {
+            type: "image",
+            file: "photos/photo23.jpeg",
+            title: "Memory 23",
+            text: "Claveria's cool breeze, beautiful mountain views, and magical foggy moments. ☁️🌿❤️"
+        },
 
 
         // ================= VIDEO MEMORIES =================
@@ -315,6 +328,18 @@ document.addEventListener("DOMContentLoaded", () => {
             file: "videos/vid18.mp4",
             title: "Video 18",
             text: "At Medina Bay, surrounded by nature and the fresh sea breeze, I find myself looking at the most beautiful woman in my life. Every smile of yours makes the moment special. ❤️"
+        },
+         {
+            type: "video",
+            file: "videos/vid19.mp4",
+            title: "Video 19",
+            text: "My today's driver"
+        },
+           {
+            type: "video",
+            file: "videos/vid20.mp4",
+            title: "Video 20",
+            text: "You only know my love"
         }
 
     ];
