@@ -210,21 +210,21 @@ document.addEventListener("DOMContentLoaded", () => {
       
        {
             type: "image",
-            file: "photos/photo25.jpeg",
+            file: "photos/photo27.jpeg",
             title: "Memory 27",
             text: "Padagat with you🌿❤️"
         },
       
        {
             type: "image",
-            file: "photos/photo25.jpeg",
+            file: "photos/photo28.jpeg",
             title: "Memory 28",
             text: "Padagat with you🌿❤️"
         },
       
        {
             type: "image",
-            file: "photos/photo25.jpeg",
+            file: "photos/photo29.jpeg",
             title: "Memory 29",
             text: "Padagat with you🌿❤️"
         },
