@@ -196,9 +196,37 @@ document.addEventListener("DOMContentLoaded", () => {
        
          {
             type: "image",
-            file: "photos/photo23.jpeg",
-            title: "Memory 23",
+            file: "photos/photo25.jpeg",
+            title: "Memory 25",
             text: "Claveria's cool breeze, beautiful mountain views, and magical foggy moments. ☁️🌿❤️"
+        },
+      
+       {
+            type: "image",
+            file: "photos/photo26.jpeg",
+            title: "Memory 26",
+            text: "Padagat with you🌿❤️"
+        },
+      
+       {
+            type: "image",
+            file: "photos/photo25.jpeg",
+            title: "Memory 27",
+            text: "Padagat with you🌿❤️"
+        },
+      
+       {
+            type: "image",
+            file: "photos/photo25.jpeg",
+            title: "Memory 28",
+            text: "Padagat with you🌿❤️"
+        },
+      
+       {
+            type: "image",
+            file: "photos/photo25.jpeg",
+            title: "Memory 29",
+            text: "Padagat with you🌿❤️"
         },
 
 
